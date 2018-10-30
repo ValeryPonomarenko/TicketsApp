@@ -12,7 +12,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:hint="Blabla"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:background="#ffffff"/>
 
     <TextView
         android:id="@+id/editText_destination_to"

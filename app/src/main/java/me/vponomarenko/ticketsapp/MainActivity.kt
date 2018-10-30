@@ -1,9 +1,14 @@
 package me.vponomarenko.ticketsapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import me.vponomarenko.ticketsapp.data.DataSource
+import me.vponomarenko.ticketsapp.data.mappers.CityEntityToCity
+import me.vponomarenko.ticketsapp.data.repositories.CitiesRepository
+import me.vponomarenko.ticketsapp.domain.search.SearchCityUseCase
+import me.vponomarenko.ticketsapp.presentation.search.city.view.FragmentDependencies
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentDependencies {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,4 +19,7 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
+    override fun provideSearchCityUseCase(): SearchCityUseCase =
+        SearchCityUseCase(CitiesRepository(DataSource(), CityEntityToCity()))
 }

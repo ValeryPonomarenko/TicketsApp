@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_search.*
+import me.vponomarenko.ticketsapp.presentation.search.city.view.DestinationFragment
 
 class FragmentSearch : Fragment() {
 
