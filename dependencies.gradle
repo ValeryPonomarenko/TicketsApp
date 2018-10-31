@@ -1,0 +1,21 @@
+def appcompat_version = "1.0.0"
+def constraintlayout_version = "2.0.0-alpha2"
+
+def runner_version = "1.1.0-beta02"
+def espresso_core_version = "3.1.0-beta02"
+
+ext.deps = [
+        kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+        appcompat       : "androidx.appcompat:appcompat:$appcompat_version",
+        constraintlayout: "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+]
+
+ext.testing = [
+        junit        : 'junit:junit:4.12',
+        runner       : "androidx.test:runner:$runner_version",
+        espresso_core: "androidx.test.espresso:espresso-core:$espresso_core_version"
+]
+
+ext.annotation = [
+
+]

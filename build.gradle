@@ -27,3 +27,5 @@ task clean(type: Delete) {
 }
 
 apply from: 'modules.gradle'
+apply from: 'versions.gradle'
+apply from: 'dependencies.gradle'

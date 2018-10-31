@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion app.compileSdkVersion
     defaultConfig {
         applicationId "me.vponomarenko.ticketsapp"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.compileSdkVersion
+        versionCode getVersionCode(app.versionName)
+        versionName app.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -37,16 +37,26 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation appModules.presentation.search
     implementation appModules.presentation.details
     implementation appModules.domain.search
     implementation appModules.domain.details
     implementation appModules.data
 
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    implementation deps.kotlin
+    implementation deps.appcompat
+    implementation deps.constraintlayout
+
+    testImplementation testing.junit
+    androidTestImplementation testing.runner
+    androidTestImplementation testing.espresso_core
+}
+
+int getVersionCode(versionName) {
+    def (major, minor, patch) = versionName.toLowerCase().tokenize('.')
+
+    (major, minor, patch) = [major, minor, patch].collect{it.toInteger()}
+
+    (major * 1000000) + (minor * 1000) + (patch * 10)
 }

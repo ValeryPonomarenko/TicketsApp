@@ -1,0 +1,5 @@
+ext.app = [
+        compileSdkVersion: 28,
+        minSdkVersion    : 21,
+        versionName      : "0.0.1"
+]
