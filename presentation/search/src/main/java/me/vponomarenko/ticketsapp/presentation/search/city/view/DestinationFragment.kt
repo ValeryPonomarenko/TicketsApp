@@ -5,6 +5,7 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_destination.*
@@ -17,8 +18,27 @@ import javax.inject.Inject
 
 class DestinationFragment : Fragment(), IHasComponent {
 
+    companion object {
+        private val EXTRA_IS_FROM = "search.city.isFrom"
+        private val EXTRA_TRANSITION_NAME = "search.city.transitionName"
+
+        fun newInstance(isFrom: Boolean, transitionName: String): Fragment =
+            DestinationFragment().apply {
+                val args = Bundle()
+                args.putBoolean(EXTRA_IS_FROM, isFrom)
+                args.putString(EXTRA_TRANSITION_NAME, transitionName)
+                this.arguments = args
+            }
+    }
+
     @Inject
     internal lateinit var useCase: SearchForCityUseCase
+
+    private val isFrom: Boolean
+        get() = arguments?.getBoolean(EXTRA_IS_FROM) ?: throw IllegalStateException()
+
+    private val transitionName: String
+        get() = arguments?.getString(EXTRA_TRANSITION_NAME) ?: throw IllegalStateException()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +58,17 @@ class DestinationFragment : Fragment(), IHasComponent {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ViewCompat.setTransitionName(editText_destination, "destination")
+        prepareView()
+        ViewCompat.setTransitionName(group_destination, transitionName)
         startPostponedEnterTransition()
-        editText_destination.text = useCase("").joinToString(separator = ", ") { it.name }
     }
 
     override fun getComponent(): SearchForCityComponent = SearchForCityComponent.init()
+
+    private fun prepareView() {
+        editText_destination.hint = if (isFrom) getString(R.string.from) else getString(R.string.to)
+        image_destination.setImageDrawable(
+            ContextCompat.getDrawable(requireContext(), if (isFrom) R.drawable.ic_flight_takeoff else R.drawable.ic_flight_land)
+        )
+    }
 }
