@@ -38,9 +38,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation appModules.presentation.search
-    implementation appModules.presentation.result
+    implementation appModules.presentation.details
     implementation appModules.domain.search
-    implementation appModules.domain.result
+    implementation appModules.domain.details
     implementation appModules.data
 
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

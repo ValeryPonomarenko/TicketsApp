@@ -1,16 +1,16 @@
 include ':app'
 
 //presentation
-include ':presentation_result'
-project(':presentation_result').projectDir = new File(rootDir, 'presentation/result')
+include ':presentation_details'
+project(':presentation_details').projectDir = new File(rootDir, 'presentation/details')
 include ':presentation_search'
 project(':presentation_search').projectDir = new File(rootDir, 'presentation/search')
 
 //domain
 include ':domain_search'
 project(':domain_search').projectDir = new File(rootDir, 'domain/search')
-include ':domain_result'
-project(':domain_result').projectDir = new File(rootDir, 'domain/result')
+include ':domain_details'
+project(':domain_details').projectDir = new File(rootDir, 'domain/details')
 
 //data
 include ':data'
