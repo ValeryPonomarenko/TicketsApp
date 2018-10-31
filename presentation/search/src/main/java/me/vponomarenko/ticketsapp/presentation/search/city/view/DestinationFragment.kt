@@ -8,13 +8,26 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_destination.*
-import me.vponomarenko.ticketsapp.domain.search.SearchCityUseCase
+import me.vponomarenko.injectionmanager.IHasComponent
+import me.vponomarenko.injectionmanager.x.XInjectionManager
+import me.vponomarenko.ticketsapp.domain.search.SearchForCityUseCase
 import me.vponomarenko.ticketsapp.presentation.search.R
+import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityComponent
+import javax.inject.Inject
 
-class DestinationFragment : Fragment() {
+class DestinationFragment : Fragment(), IHasComponent {
 
-    private val useCase: SearchCityUseCase by lazy {
-        (activity as? FragmentDependencies)?.provideSearchCityUseCase() ?: throw IllegalStateException()
+    @Inject
+    internal lateinit var useCase: SearchForCityUseCase
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        XInjectionManager.instance
+            .bindComponent<SearchForCityComponent>(this)
+            .inject(this)
+        postponeEnterTransition()
+        sharedElementEnterTransition =
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
     }
 
     override fun onCreateView(
@@ -23,13 +36,6 @@ class DestinationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_destination, container, false)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        postponeEnterTransition()
-        sharedElementEnterTransition =
-            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ViewCompat.setTransitionName(editText_destination, "destination")
@@ -37,4 +43,5 @@ class DestinationFragment : Fragment() {
         editText_destination.text = useCase("").joinToString(separator = ", ") { it.name }
     }
 
+    override fun getComponent(): SearchForCityComponent = SearchForCityComponent.init()
 }

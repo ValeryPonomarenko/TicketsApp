@@ -4,8 +4,9 @@ import me.vponomarenko.ticketsapp.data.IDataSource
 import me.vponomarenko.ticketsapp.data.mappers.CityEntityToCity
 import me.vponomarenko.ticketsapp.domain.search.api.ICitiesRepository
 import me.vponomarenko.ticketsapp.domain.search.data.City
+import javax.inject.Inject
 
-class CitiesRepository constructor(
+class CitiesRepository @Inject constructor(
     private val dataSource: IDataSource,
     private val mapper: CityEntityToCity
 ): ICitiesRepository {
