@@ -32,5 +32,8 @@ class FragmentSearch : Fragment() {
         group_destination_to.setOnClickListener {
             navigator.openDestinationSearch(group_destination_to, ViewCompat.getTransitionName(group_destination_to)!!, false)
         }
+        button_search.setOnClickListener {
+            motion.transitionToEnd()
+        }
     }
 }
