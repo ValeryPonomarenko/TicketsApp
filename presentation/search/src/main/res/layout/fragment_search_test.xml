@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/motion"
-    app:applyMotionScene="true"
-    app:layoutDescription="@xml/search_motion_scene">
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/view"
@@ -16,11 +13,16 @@
 
     <LinearLayout
         android:id="@+id/group_destination_from"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:alpha="1"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         android:padding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/group_destination_to"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/view"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -43,13 +45,18 @@
 
     <LinearLayout
         android:id="@+id/group_destination_to"
-        android:layout_width="match_parent"
+        android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/group_destination_from"
+        android:alpha="1"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
         android:padding="8dp"
-        tools:ignore="UseCompoundDrawables">
+        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/group_destination_from"
+        tools:ignore="UseCompoundDrawables"
+        tools:layout_editor_absoluteY="0dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -81,4 +88,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
