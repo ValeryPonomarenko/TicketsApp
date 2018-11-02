@@ -7,7 +7,19 @@
     </style>
 
     <style name="DestinationEditText" parent="Base.V7.Widget.AppCompat.EditText">
-        <item name="android:textAppearance">@style/DestinationTextAppearance</item>
+        <item name="android:textColor">@color/colorTexasRose</item>
         <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextAppearance.Destination" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+    </style>
+
+    <style name="EditText.Destination" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
