@@ -25,6 +25,7 @@ dependencies {
     implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.constraintlayout
+    implementation deps.material
     implementation deps.dagger
     implementation deps.componentsmanager
     kapt annotation.dagger

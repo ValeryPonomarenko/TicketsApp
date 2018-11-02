@@ -2,4 +2,5 @@
     <string name="app_name">search</string>
     <string name="from">Departing from</string>
     <string name="to">Flying to</string>
+    <string name="search_flights">Search Flights</string>
 </resources>

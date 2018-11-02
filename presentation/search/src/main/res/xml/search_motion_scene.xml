@@ -33,12 +33,21 @@
             motion:layout_constraintTop_toBottomOf="@+id/group_destination_from" />
 
         <Constraint
-            android:id="@+id/view"
+            android:id="@id/view"
             android:layout_width="0dp"
             android:layout_height="176dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/container_search_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="@+id/guideline_search_button"
+            motion:layout_constraintTop_toBottomOf="@+id/view" />
+
 
     </ConstraintSet>
 
@@ -69,12 +78,20 @@
             motion:layout_constraintStart_toEndOf="@+id/group_destination_from" />
 
         <Constraint
-            android:id="@+id/view"
+            android:id="@id/view"
             android:layout_width="0dp"
             android:layout_height="56dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/container_search_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintStart_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/view" />
 
     </ConstraintSet>
 

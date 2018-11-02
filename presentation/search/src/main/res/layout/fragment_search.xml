@@ -2,9 +2,9 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/motion"
     app:applyMotionScene="true"
     app:layoutDescription="@xml/search_motion_scene">
 
@@ -65,20 +65,39 @@
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
             android:hint="@string/to"
-            android:textAppearance="@style/DestinationTextAppearance" />
+            android:textAppearance="@style/DestinationTextAppearance"
+            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_search"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/container_search_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_search"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="-34dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/search_flights"
+            app:cornerRadius="34dp"
+            app:icon="@drawable/ic_search"
+            app:rippleColor="@color/colorTexasRose" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
