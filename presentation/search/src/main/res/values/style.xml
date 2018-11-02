@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="DestinationTextAppearance" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorEastBay</item>
-    </style>
-
-    <style name="DestinationEditText" parent="Base.V7.Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/colorTexasRose</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
     <style name="TextAppearance.Destination" parent="TextAppearance.AppCompat">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorHint">@color/colorWhite</item>
+    </style>
+
+    <style name="TextAppearance.Time" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/colorGunPowder</item>
+    </style>
+
+    <style name="TextAppearance.Destination.Small" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorSantasGray</item>
+    </style>
+
+    <style name="TextAppearance.Price" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorGunPowder</item>
+        <item name="android:fontFamily">sans-serif-black</item>
     </style>
 
     <style name="EditText.Destination" parent="Base.Widget.AppCompat.EditText">
@@ -22,4 +25,5 @@
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
 </resources>

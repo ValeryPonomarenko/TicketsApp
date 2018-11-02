@@ -8,11 +8,12 @@
     app:applyMotionScene="true"
     app:layoutDescription="@xml/search_motion_scene">
 
-    <View
-        android:id="@+id/view"
+    <ImageView
+        android:id="@+id/background_search"
         android:layout_width="0dp"
-        android:layout_height="176dp"
-        android:background="@drawable/left_bottom_round_corner" />
+        android:layout_height="160dp"
+        android:background="@drawable/left_bottom_round_corner"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:id="@+id/group_destination_from"
@@ -20,7 +21,6 @@
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:padding="8dp"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -37,7 +37,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:hint="@string/from" />
+            android:text="@string/from" />
 
     </LinearLayout>
 
@@ -48,7 +48,6 @@
         android:layout_below="@id/group_destination_from"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="horizontal"
-        android:padding="8dp"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -65,7 +64,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:hint="@string/to" />
+            android:text="@string/to" />
 
     </LinearLayout>
 
@@ -83,9 +82,9 @@
             android:layout_marginEnd="-34dp"
             android:layout_marginBottom="8dp"
             android:text="@string/search_flights"
+            app:backgroundTint="@color/colorTexasRose"
             app:cornerRadius="34dp"
-            app:icon="@drawable/ic_search"
-            app:rippleColor="@color/colorTexasRose" />
+            app:icon="@drawable/ic_search" />
 
     </FrameLayout>
 
@@ -95,5 +94,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.25" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/item_flight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_search_button" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

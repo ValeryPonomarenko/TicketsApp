@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/background_search"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@drawable/left_bottom_round_corner" />
@@ -35,12 +35,12 @@
 
         <TextView
             android:id="@+id/text_destination_from"
+            style="@style/TextAppearance.Destination"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:hint="@string/from"
-            android:textAppearance="@style/DestinationTextAppearance" />
+            android:hint="@string/from" />
 
     </LinearLayout>
 
@@ -67,12 +67,12 @@
 
         <TextView
             android:id="@+id/text_destination_to"
+            style="@style/TextAppearance.Destination"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
             android:hint="@string/to"
-            android:textAppearance="@style/DestinationTextAppearance"
             android:textColor="@color/colorWhite" />
 
     </LinearLayout>
@@ -84,7 +84,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toBottomOf="@+id/background_search">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_search"

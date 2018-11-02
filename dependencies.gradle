@@ -2,7 +2,8 @@ def appcompat_version = "1.0.0"
 def constraintlayout_version = "2.0.0-alpha2"
 def dagger_version = "2.19"
 def componentsmanager_version = "1.0.0"
-def material_version = "1.0.0-rc01"
+def material_version = "1.0.0"
+def recyclerview_version = "1.0.0"
 
 def junit_version = "4.12"
 def runner_version = "1.1.0-beta02"
@@ -14,7 +15,8 @@ ext.deps = [
         constraintlayout : "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
         dagger           : "com.google.dagger:dagger:$dagger_version",
         componentsmanager: "com.github.valeryponomarenko.componentsmanager:androidx:$componentsmanager_version",
-        material: "com.google.android.material:material:$material_version"
+        material         : "com.google.android.material:material:$material_version",
+        recyclerview     : "androidx.recyclerview:recyclerview:$recyclerview_version"
 ]
 
 ext.testing = [

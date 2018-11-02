@@ -14,9 +14,9 @@
             android:id="@id/group_destination_from"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             motion:layout_constraintEnd_toStartOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
@@ -25,17 +25,17 @@
             android:id="@id/group_destination_to"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/group_destination_from" />
 
         <Constraint
-            android:id="@id/view"
+            android:id="@id/background_search"
             android:layout_width="0dp"
-            android:layout_height="176dp"
+            android:layout_height="160dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
             android:layout_marginTop="32dp"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="@+id/guideline_search_button"
-            motion:layout_constraintTop_toBottomOf="@+id/view" />
+            motion:layout_constraintTop_toBottomOf="@+id/background_search" />
 
     </ConstraintSet>
 
@@ -78,7 +78,7 @@
             motion:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
-            android:id="@id/view"
+            android:id="@id/background_search"
             android:layout_width="0dp"
             android:layout_height="56dp"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
             android:layout_marginTop="32dp"
             android:alpha="0"
             motion:layout_constraintStart_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/view" />
+            motion:layout_constraintTop_toBottomOf="@+id/background_search" />
 
     </ConstraintSet>
 

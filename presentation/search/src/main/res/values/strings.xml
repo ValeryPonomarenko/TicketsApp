@@ -3,4 +3,5 @@
     <string name="from">Departing from</string>
     <string name="to">Flying to</string>
     <string name="search_flights">Search Flights</string>
+    <string name="select">Select</string>
 </resources>

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/background_search"
         android:layout_width="0dp"
         android:layout_height="176dp"
         android:background="@drawable/left_bottom_round_corner" />
@@ -36,12 +36,12 @@
 
         <TextView
             android:id="@+id/text_destination_from"
+            style="@style/TextAppearance.Destination"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:hint="@string/from"
-            android:textAppearance="@style/DestinationTextAppearance" />
+            android:text="@string/from" />
 
     </LinearLayout>
 
@@ -70,13 +70,12 @@
 
         <TextView
             android:id="@+id/text_destination_to"
+            style="@style/TextAppearance.Destination"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:hint="@string/to"
-            android:textAppearance="@style/DestinationTextAppearance"
-            android:textColor="@color/colorWhite" />
+            android:text="@string/to" />
 
     </LinearLayout>
 
@@ -87,7 +86,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline_search_button"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toBottomOf="@+id/background_search">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_search"
@@ -110,6 +109,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_flights"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/background_search" />
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
