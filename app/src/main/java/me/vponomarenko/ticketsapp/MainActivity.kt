@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import me.vponomarenko.ticketsapp.presentation.search.city.view.DestinationFragment
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
-import me.vponomarenko.ticketsapp.presentation.search.ticket.view.FragmentSearch
+import me.vponomarenko.ticketsapp.presentation.search.ticket.view.SearchFragment
 
 class MainActivity : AppCompatActivity(), SearchNavigation {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity(), SearchNavigation {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentSearch())
+                .replace(R.id.fragmentContainer, SearchFragment())
                 .commit()
         }
     }

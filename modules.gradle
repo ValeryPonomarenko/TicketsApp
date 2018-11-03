@@ -1,12 +1,12 @@
 ext.appModules = [
         presentation: [
-                search: project('presentation_search'),
-                details: project('presentation_details')
+                search : project(':presentation_search'),
+                details: project(':presentation_details')
         ],
         domain      : [
-                search: project(':domain_search'),
+                search : project(':domain_search'),
                 details: project(':domain_details')
         ],
         data        : project(':data'),
-        bla : project('presentation_search')
+        common      : project(':common')
 ]
