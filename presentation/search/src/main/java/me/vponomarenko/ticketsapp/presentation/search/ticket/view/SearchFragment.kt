@@ -22,12 +22,11 @@ class SearchFragment : Fragment(), IHasComponent {
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
 
+    @Inject
+    internal lateinit var navigator: SearchNavigation
+
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
-    }
-
-    private val navigator by lazy {
-        (activity as? SearchNavigation) ?: throw IllegalStateException()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +47,10 @@ class SearchFragment : Fragment(), IHasComponent {
         ViewCompat.setTransitionName(group_destination_from, "destination_from")
         ViewCompat.setTransitionName(group_destination_to, "destination_to")
         group_destination_from.setOnClickListener {
-            navigator.openDestinationSearch(group_destination_from, ViewCompat.getTransitionName(group_destination_from)!!, true)
+            viewModel.onDepartingFromClick()
         }
         group_destination_to.setOnClickListener {
-            navigator.openDestinationSearch(group_destination_to, ViewCompat.getTransitionName(group_destination_to)!!, false)
+            viewModel.onFlightToClick()
         }
         button_search.setOnClickListener {
             motion.transitionToEnd()
