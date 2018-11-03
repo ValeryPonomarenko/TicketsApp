@@ -13,7 +13,9 @@
         android:layout_width="0dp"
         android:layout_height="160dp"
         android:background="@drawable/left_bottom_round_corner"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="1dp" />
 
     <LinearLayout
         android:id="@+id/group_destination_from"
@@ -105,5 +107,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/container_search_button" />
+
+    <TextView
+        android:id="@+id/text_small_from"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MSK" />
+
+    <ImageView
+        android:id="@+id/image_airplane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_airplane" />
+
+    <TextView
+        android:id="@+id/text_small_to"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NYC" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

@@ -50,6 +50,36 @@
             motion:layout_constraintStart_toStartOf="@+id/guideline_search_button"
             motion:layout_constraintTop_toBottomOf="@+id/background_search" />
 
+        <Constraint
+            android:id="@id/text_small_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="0"
+            motion:layout_constraintBottom_toTopOf="@+id/background_search"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/image_airplane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="0"
+            android:rotation="90"
+            motion:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+            motion:layout_constraintStart_toEndOf="@+id/text_small_from"
+            motion:layout_constraintTop_toTopOf="@+id/text_small_from" />
+
+        <Constraint
+            android:id="@id/text_small_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+            motion:layout_constraintStart_toEndOf="@id/image_airplane"
+            motion:layout_constraintTop_toTopOf="@+id/text_small_from" />
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -94,6 +124,37 @@
             android:alpha="0"
             motion:layout_constraintStart_toEndOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/background_search" />
+
+        <Constraint
+            android:id="@id/text_small_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="@+id/background_search"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/image_airplane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="1"
+            android:rotation="90"
+            motion:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+            motion:layout_constraintStart_toEndOf="@+id/text_small_from"
+            motion:layout_constraintTop_toTopOf="@+id/text_small_from" />
+
+        <Constraint
+            android:id="@id/text_small_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+            motion:layout_constraintStart_toEndOf="@id/image_airplane"
+            motion:layout_constraintTop_toTopOf="@+id/text_small_from" />
 
     </ConstraintSet>
 

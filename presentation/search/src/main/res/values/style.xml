@@ -6,6 +6,12 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="TextAppearance.Destination.Large" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
     <style name="TextAppearance.Time" parent="@style/TextAppearance.AppCompat.Large">
         <item name="android:textColor">@color/colorGunPowder</item>
     </style>

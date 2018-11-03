@@ -109,4 +109,41 @@
         app:layout_constraintGuide_percent="0.25" />
 
 
+    <TextView
+        android:id="@+id/text_small_from"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="@+id/background_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="MSK" />
+
+    <ImageView
+        android:id="@+id/image_airplane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:alpha="1"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+        app:layout_constraintStart_toEndOf="@+id/text_small_from"
+        app:layout_constraintTop_toTopOf="@+id/text_small_from"
+        app:srcCompat="@drawable/ic_airplane" />
+
+    <TextView
+        android:id="@+id/text_small_to"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="@+id/text_small_from"
+        app:layout_constraintStart_toEndOf="@id/image_airplane"
+        app:layout_constraintTop_toTopOf="@+id/text_small_from"
+        tools:text="NYC" />
+
+
 </androidx.constraintlayout.motion.widget.MotionLayout>
