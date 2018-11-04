@@ -6,7 +6,7 @@ import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.ticketsapp.di.AppComponent
 import me.vponomarenko.ticketsapp.navigation.Navigator
 import me.vponomarenko.ticketsapp.navigation.NavigatorHolder
-import me.vponomarenko.ticketsapp.presentation.search.ticket.view.SearchFragment
+import me.vponomarenko.ticketsapp.navigation.commands.AsRoot
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
             .findComponent<AppComponent>()
             .inject(this)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, SearchFragment())
-                .commit()
+            navigatorHolder.consumeCommand(AsRoot(Screen.Main))
         }
     }
 

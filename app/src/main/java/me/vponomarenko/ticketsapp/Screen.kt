@@ -5,7 +5,9 @@ package me.vponomarenko.ticketsapp
  * Date: 03/11/2018
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
- 
-object Screens {
-    const val DESTINATION = "DestinationFragment"
+
+sealed class Screen {
+    object Main : Screen()
+
+    data class Destination(val isFrom: Boolean) : Screen()
 }

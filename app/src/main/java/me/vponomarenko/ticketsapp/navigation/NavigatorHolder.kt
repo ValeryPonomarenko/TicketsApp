@@ -1,5 +1,6 @@
 package me.vponomarenko.ticketsapp.navigation
 
+import me.vponomarenko.ticketsapp.navigation.commands.AsRoot
 import me.vponomarenko.ticketsapp.navigation.commands.Command
 import me.vponomarenko.ticketsapp.navigation.commands.Forward
 import me.vponomarenko.ticketsapp.navigation.commands.ForwardForResult
@@ -24,18 +25,19 @@ class NavigatorHolder {
 
     fun consumeCommand(command: Command) {
         val nav = navigator
-        if (nav != null) {
-            if (command is ForwardForResult) {
-                nav.consumeCommand(Forward(command.screenName, command.data))
-            } else {
-                nav.consumeCommand(command)
-            }
-        } else {
+        if (nav == null) {
             saveCommand(command)
+            return
+        }
+        if (command is ForwardForResult) {
+            nav.consumeCommand(Forward(command.screen))
+        } else {
+            nav.consumeCommand(command)
         }
     }
 
     private fun saveCommand(command: Command) {
+        if (command is AsRoot) commandsBuffer.clear()
         commandsBuffer.add(command)
     }
 }
