@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [DomainSearchForCitiesDepsOut::class],
+    dependencies = [DomainSearchForCitiesDepsOut::class, SearchForCityComponentDepsIn::class],
     modules = []
 )
 interface SearchForCityComponent {
@@ -17,6 +17,7 @@ interface SearchForCityComponent {
         fun init(): SearchForCityComponent =
             DaggerSearchForCityComponent.builder()
                 .domainSearchForCitiesDepsOut(XInjectionManager.instance.findComponent())
+                .searchForCityComponentDepsIn(XInjectionManager.instance.findComponent())
                 .build()
     }
 }

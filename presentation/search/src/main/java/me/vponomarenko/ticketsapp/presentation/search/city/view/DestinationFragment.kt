@@ -1,6 +1,7 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.view
 
 import android.os.Bundle
+import android.os.Handler
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +13,17 @@ import kotlinx.android.synthetic.main.fragment_destination.*
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.ticketsapp.domain.search.SearchForCityUseCase
+import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityComponent
+import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
 import javax.inject.Inject
 
 class DestinationFragment : Fragment(), IHasComponent {
 
     companion object {
-        private val EXTRA_IS_FROM = "search.city.isFrom"
-        private val EXTRA_TRANSITION_NAME = "search.city.transitionName"
+        private const val EXTRA_IS_FROM = "search.city.isFrom"
+        private const val EXTRA_TRANSITION_NAME = "search.city.transitionName"
 
         fun newInstance(isFrom: Boolean, transitionName: String): Fragment =
             DestinationFragment().apply {
@@ -33,6 +36,9 @@ class DestinationFragment : Fragment(), IHasComponent {
 
     @Inject
     internal lateinit var useCase: SearchForCityUseCase
+
+    @Inject
+    internal lateinit var navigation: DestinationNavigation
 
     private val isFrom: Boolean
         get() = arguments?.getBoolean(EXTRA_IS_FROM) ?: throw IllegalStateException()
@@ -61,6 +67,9 @@ class DestinationFragment : Fragment(), IHasComponent {
         prepareView()
         ViewCompat.setTransitionName(group_destination, transitionName)
         startPostponedEnterTransition()
+        Handler().postDelayed({
+            navigation.exitWithResult(City("Moscow", "MSK"))
+        }, 3000)
     }
 
     override fun getComponent(): SearchForCityComponent = SearchForCityComponent.init()

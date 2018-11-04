@@ -39,7 +39,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:text="@string/from" />
+            android:hint="@string/from" />
 
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:text="@string/to" />
+            android:hint="@string/to" />
 
     </LinearLayout>
 
@@ -113,7 +113,7 @@
         style="@style/TextAppearance.Destination.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MSK" />
+        tools:text="MSK" />
 
     <ImageView
         android:id="@+id/image_airplane"
@@ -126,6 +126,6 @@
         style="@style/TextAppearance.Destination.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NYC" />
+        tools:text="NYC" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

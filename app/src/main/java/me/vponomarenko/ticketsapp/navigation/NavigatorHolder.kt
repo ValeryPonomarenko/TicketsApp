@@ -2,8 +2,6 @@ package me.vponomarenko.ticketsapp.navigation
 
 import me.vponomarenko.ticketsapp.navigation.commands.AsRoot
 import me.vponomarenko.ticketsapp.navigation.commands.Command
-import me.vponomarenko.ticketsapp.navigation.commands.Forward
-import me.vponomarenko.ticketsapp.navigation.commands.ForwardForResult
 import java.util.concurrent.LinkedBlockingQueue
 
 class NavigatorHolder {
@@ -29,11 +27,7 @@ class NavigatorHolder {
             saveCommand(command)
             return
         }
-        if (command is ForwardForResult) {
-            nav.consumeCommand(Forward(command.screen))
-        } else {
-            nav.consumeCommand(command)
-        }
+        nav.consumeCommand(command)
     }
 
     private fun saveCommand(command: Command) {

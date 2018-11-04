@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_search.*
 import me.vponomarenko.injectionmanager.IHasComponent
@@ -15,6 +16,7 @@ import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.ticket.di.SearchComponent
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchViewModel
+import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
 
 class SearchFragment : Fragment(), IHasComponent {
@@ -55,7 +57,21 @@ class SearchFragment : Fragment(), IHasComponent {
         button_search.setOnClickListener {
             motion.transitionToEnd()
         }
+        observeViewModel()
     }
 
     override fun getComponent(): SearchComponent = SearchComponent.init()
+
+    private fun observeViewModel() {
+        viewModel.viewState.observe(this, Observer<SearchViewState> {
+            when (it) {
+                is SearchViewState.Entering -> {
+                    text_destination_from.text = it.from.name
+                    text_small_from.text = it.from.shortName
+                    text_destination_to.text = it.to.name
+                    text_small_to.text = it.to.shortName
+                }
+            }
+        })
+    }
 }

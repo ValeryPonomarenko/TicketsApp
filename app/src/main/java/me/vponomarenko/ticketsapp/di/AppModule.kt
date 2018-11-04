@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import me.vponomarenko.ticketsapp.navigation.NavigationFacade
 import me.vponomarenko.ticketsapp.navigation.NavigatorHolder
+import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 import javax.inject.Singleton
 
@@ -23,4 +24,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideSearchNavigation(navigationFacade: NavigationFacade): SearchNavigation = navigationFacade
+
+    @Singleton
+    @Provides
+    fun provideDestinationNavigation(navigationFacade: NavigationFacade): DestinationNavigation = navigationFacade
 }

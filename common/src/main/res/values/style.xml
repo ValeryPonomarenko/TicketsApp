@@ -4,6 +4,7 @@
     <style name="TextAppearance.Destination" parent="TextAppearance.AppCompat">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
     </style>
 
     <style name="TextAppearance.Destination.Large" parent="TextAppearance.AppCompat">

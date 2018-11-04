@@ -6,6 +6,7 @@ import me.vponomarenko.ticketsapp.MainActivity
 import me.vponomarenko.ticketsapp.R
 import me.vponomarenko.ticketsapp.Screen
 import me.vponomarenko.ticketsapp.navigation.commands.AsRoot
+import me.vponomarenko.ticketsapp.navigation.commands.Back
 import me.vponomarenko.ticketsapp.navigation.commands.Command
 import me.vponomarenko.ticketsapp.navigation.commands.Forward
 import me.vponomarenko.ticketsapp.presentation.search.city.view.DestinationFragment
@@ -23,19 +24,27 @@ class Navigator(private val activity: MainActivity) {
                     openFragment(DestinationFragment.newInstance(command.screen.isFrom, "empty"))
             }
             is AsRoot -> when (command.screen) {
-                is Screen.Main -> openFragment(SearchFragment(), false)
+                is Screen.Main -> {
+                    clearBackstack()
+                    openFragment(SearchFragment(), false)
+                }
             }
+            is Back -> popFragment()
         }
     }
 
     private fun openFragment(fragment: Fragment, addToBackStack: Boolean = true) {
-        activity.supportFragmentManager
+        fragmentManager
             .beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .apply {
                 if (addToBackStack) addToBackStack(null)
             }
             .commit()
+    }
+
+    private fun popFragment() {
+        fragmentManager.popBackStack()
     }
 
     private fun clearBackstack() {
