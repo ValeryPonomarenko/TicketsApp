@@ -20,16 +20,10 @@ class NavigationFacade @Inject constructor(
     private val navigatorHolder: NavigatorHolder
 ) : SearchNavigation, DestinationNavigation {
 
-    companion object {
-        private const val REQUEST_CITY = 1000
-    }
-
-//    private val resultListeners = mutableListOf<Pair<Int, Any>>()
     private var cityResultListener: ((City) -> Unit)? = null
 
     override fun openDestinationSearch(isFrom: Boolean, resultListener: (City) -> Unit) {
         val screen = Screen.Destination(isFrom)
-//        resultListeners.add(REQUEST_CITY to resultListener)
         cityResultListener = resultListener
         navigatorHolder.consumeCommand(Forward(screen))
     }

@@ -1,5 +1,6 @@
 package me.vponomarenko.ticketsapp.presentation.search.ticket.di
 
+import me.vponomarenko.ticketsapp.presentation.search.ticket.animation.SearchFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 
 /**
@@ -10,4 +11,5 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNa
 
 interface SearchComponentDepsIn {
     fun provideSearchNavigation(): SearchNavigation
+    fun provideSearchSharedUiAnimator(): SearchFragmentSharedUiAnimator
 }

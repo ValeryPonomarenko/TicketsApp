@@ -1,5 +1,6 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.di
 
+import me.vponomarenko.ticketsapp.presentation.search.city.animation.DestinationFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
 
 /**
@@ -10,4 +11,5 @@ import me.vponomarenko.ticketsapp.presentation.search.city.navigation.Destinatio
 
 interface SearchForCityComponentDepsIn {
     fun provideDestinationNavigation(): DestinationNavigation
+    fun provideDestinationSharedUiAnimator(): DestinationFragmentSharedUiAnimator
 }

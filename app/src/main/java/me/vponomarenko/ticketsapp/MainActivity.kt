@@ -3,6 +3,7 @@ package me.vponomarenko.ticketsapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import me.vponomarenko.injectionmanager.x.XInjectionManager
+import me.vponomarenko.ticketsapp.animations.SharedUiElementsManager
 import me.vponomarenko.ticketsapp.di.AppComponent
 import me.vponomarenko.ticketsapp.navigation.Navigator
 import me.vponomarenko.ticketsapp.navigation.NavigatorHolder
@@ -14,7 +15,10 @@ class MainActivity : AppCompatActivity() {
     @Inject
     internal lateinit var navigatorHolder: NavigatorHolder
 
-    private val navigator by lazy { Navigator(this) }
+    @Inject
+    internal lateinit var sharedUiElementsManager: SharedUiElementsManager
+
+    private val navigator by lazy { Navigator(this, sharedUiElementsManager) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +40,4 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         navigatorHolder.releaseNavigator()
     }
-
-//    override fun openDestinationSearch(sharedElement: View, transitionName: String, isFrom: Boolean) {
-//        supportFragmentManager
-//            .beginTransaction()
-//            .addSharedElement(sharedElement, transitionName)
-//            .replace(R.id.fragmentContainer, DestinationFragment.newInstance(isFrom, transitionName))
-//            .addToBackStack("From")
-//            .commit()
-//    }
 }

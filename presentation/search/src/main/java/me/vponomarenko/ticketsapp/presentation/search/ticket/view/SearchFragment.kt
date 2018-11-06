@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,8 +12,8 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
 import me.vponomarenko.ticketsapp.presentation.search.R
+import me.vponomarenko.ticketsapp.presentation.search.ticket.animation.SearchFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.ticket.di.SearchComponent
-import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchViewModel
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
@@ -25,7 +24,7 @@ class SearchFragment : Fragment(), IHasComponent {
     internal lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    internal lateinit var navigator: SearchNavigation
+    internal lateinit var sharedUiAnimator: SearchFragmentSharedUiAnimator
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
@@ -46,17 +45,18 @@ class SearchFragment : Fragment(), IHasComponent {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ViewCompat.setTransitionName(group_destination_from, "destination_from")
-        ViewCompat.setTransitionName(group_destination_to, "destination_to")
+
+        sharedUiAnimator.prepareFrom(group_destination_from)
+        sharedUiAnimator.prepareTo(group_destination_to)
         group_destination_from.setOnClickListener {
+            sharedUiAnimator.share(it)
             viewModel.onDepartingFromClick()
         }
         group_destination_to.setOnClickListener {
+            sharedUiAnimator.share(it)
             viewModel.onFlightToClick()
         }
-        button_search.setOnClickListener {
-            motion.transitionToEnd()
-        }
+        button_search.setOnClickListener { motion.transitionToEnd() }
         observeViewModel()
     }
 
