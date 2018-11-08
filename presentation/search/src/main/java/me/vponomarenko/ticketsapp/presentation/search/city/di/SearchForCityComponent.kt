@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     dependencies = [DomainSearchForCitiesDepsOut::class, SearchForCityComponentDepsIn::class],
-    modules = []
+    modules = [SearchForCityModule::class]
 )
 interface SearchForCityComponent {
     fun inject(fragment: DestinationFragment)

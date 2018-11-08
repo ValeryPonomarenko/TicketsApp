@@ -30,4 +30,11 @@
 
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_destinations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/group_destination"
+        tools:listitem="@layout/item_destination" />
+
 </RelativeLayout>
