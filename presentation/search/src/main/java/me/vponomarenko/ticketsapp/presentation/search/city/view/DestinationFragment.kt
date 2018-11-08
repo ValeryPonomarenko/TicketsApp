@@ -18,7 +18,7 @@ import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityCompo
 import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
 import javax.inject.Inject
 
-class DestinationFragment : Fragment(), IHasComponent {
+class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
 
     companion object {
         private const val EXTRA_IS_FROM = "search.city.isFrom"
@@ -43,7 +43,7 @@ class DestinationFragment : Fragment(), IHasComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         XInjectionManager.instance
-            .bindComponent<SearchForCityComponent>(this)
+            .bindComponent(this)
             .inject(this)
         postponeEnterTransition()
         with (TransitionInflater.from(requireContext())) {

@@ -18,7 +18,7 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchVie
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
 
-class SearchFragment : Fragment(), IHasComponent {
+class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
 
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
@@ -33,7 +33,7 @@ class SearchFragment : Fragment(), IHasComponent {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         XInjectionManager.instance
-            .bindComponent<SearchComponent>(this)
+            .bindComponent(this)
             .inject(this)
     }
 

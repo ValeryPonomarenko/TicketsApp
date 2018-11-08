@@ -16,20 +16,20 @@ class TicketsApplication : Application() {
 
     private fun initComponents() {
         with(XInjectionManager.instance) {
-            bindComponentToCustomLifecycle<AppComponent>(
-                object : IHasComponent {
+            bindComponentToCustomLifecycle(
+                object : IHasComponent<AppComponent> {
                     override fun getComponent(): AppComponent =
                         AppComponent.init(this@TicketsApplication)
                 }
             )
-            bindComponentToCustomLifecycle<DataComponent>(
-                object : IHasComponent {
+            bindComponentToCustomLifecycle(
+                object : IHasComponent<DataComponent> {
                     override fun getComponent(): DataComponent =
                         DataComponent.init()
                 }
             )
-            bindComponentToCustomLifecycle<DomainSearchComponent>(
-                object : IHasComponent {
+            bindComponentToCustomLifecycle(
+                object : IHasComponent<DomainSearchComponent> {
                     override fun getComponent(): DomainSearchComponent =
                         DomainSearchComponent.init(XInjectionManager.instance.findComponent())
                 }
