@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import kotlinx.android.synthetic.main.fragment_destination.*
@@ -91,6 +92,7 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
         recyclerView_destinations.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@DestinationFragment.adapter
+            (itemAnimator as? DefaultItemAnimator)?.supportsChangeAnimations = false
         }
         editText_destination.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {

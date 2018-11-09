@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_destination.*
-import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.presentation.search.R
 
 /**
@@ -24,8 +23,8 @@ class DestinationViewHolder(
             DestinationViewHolder(inflater.inflate(R.layout.item_destination, container, false))
     }
 
-    fun onBind(city: City) {
-        text_destination_name.text = city.name
+    fun onBind(city: SpannableCity) {
+        text_destination_name.text = city.city
     }
 
 }

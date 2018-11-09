@@ -1,6 +1,6 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.viewstate
 
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.presentation.search.city.recycler.SpannableCity
 
 /**
  * Author: Valery Ponomarenko
@@ -10,5 +10,5 @@ import me.vponomarenko.ticketsapp.domain.search.data.City
 
 sealed class DestinationViewState {
     object Loading : DestinationViewState()
-    data class Loaded(val destinations: List<City>) : DestinationViewState()
+    data class Loaded(val destinations: List<SpannableCity>) : DestinationViewState()
 }

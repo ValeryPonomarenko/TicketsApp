@@ -1,7 +1,6 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.recycler
 
 import androidx.recyclerview.widget.DiffUtil
-import me.vponomarenko.ticketsapp.domain.search.data.City
 
 /**
  * Author: Valery Ponomarenko
@@ -9,9 +8,9 @@ import me.vponomarenko.ticketsapp.domain.search.data.City
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class CityDiffUtil(
-    private val old: List<City>,
-    private val new: List<City>
+class SpannableCityDiffUtil(
+    private val old: List<SpannableCity>,
+    private val new: List<SpannableCity>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = old.size
@@ -19,8 +18,8 @@ class CityDiffUtil(
     override fun getNewListSize() = new.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-        old[oldItemPosition].shortName == new[newItemPosition].shortName
+        old[oldItemPosition].city.toString() == new[newItemPosition].city.toString()
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-        old[oldItemPosition] == new[newItemPosition]
+        old[oldItemPosition].city == new[newItemPosition].city
 }

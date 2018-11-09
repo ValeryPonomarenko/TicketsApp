@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import me.vponomarenko.ticketsapp.domain.search.data.City
 
 /**
  * Author: Valery Ponomarenko
@@ -14,7 +13,7 @@ import me.vponomarenko.ticketsapp.domain.search.data.City
 
 class DestinationsAdapter : RecyclerView.Adapter<DestinationViewHolder>() {
 
-    private var destinations = listOf<City>()
+    private var destinations = listOf<SpannableCity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DestinationViewHolder.create(LayoutInflater.from(parent.context), parent)
@@ -25,8 +24,8 @@ class DestinationsAdapter : RecyclerView.Adapter<DestinationViewHolder>() {
         destinations.getOrNull(position)?.let { holder.onBind(it) }
     }
 
-    fun update(destinations: List<City>) {
-        val diffResult = DiffUtil.calculateDiff(CityDiffUtil(this.destinations, destinations))
+    fun update(destinations: List<SpannableCity>) {
+        val diffResult = DiffUtil.calculateDiff(SpannableCityDiffUtil(this.destinations, destinations))
         diffResult.dispatchUpdatesTo(this)
         this.destinations = destinations
     }
