@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_destination.*
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
+import me.vponomarenko.tickets.app.common.ext.observe
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.city.animation.DestinationFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityComponent
@@ -109,10 +109,10 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
-        viewModel.viewState.observe(this, Observer<DestinationViewState> {
+        viewModel.viewState.observe(this) {
             when (it) {
                 is DestinationViewState.Loaded -> adapter.update(it.destinations)
             }
-        })
+        }
     }
 }

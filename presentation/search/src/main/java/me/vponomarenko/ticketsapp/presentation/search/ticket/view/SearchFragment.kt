@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
+import me.vponomarenko.tickets.app.common.ext.observe
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.ticket.animation.SearchFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.ticket.di.SearchComponent
+import me.vponomarenko.ticketsapp.presentation.search.ticket.recycler.FlightViewHolderDecorator
+import me.vponomarenko.ticketsapp.presentation.search.ticket.recycler.FlightsAdapter
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchViewModel
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
@@ -21,10 +24,13 @@ import javax.inject.Inject
 class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
 
     @Inject
-    internal lateinit var viewModelFactory: ViewModelFactory
+    internal lateinit var sharedUiAnimator: SearchFragmentSharedUiAnimator
 
     @Inject
-    internal lateinit var sharedUiAnimator: SearchFragmentSharedUiAnimator
+    internal lateinit var adapter: FlightsAdapter
+
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelFactory
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
@@ -56,15 +62,24 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
             sharedUiAnimator.share(it)
             viewModel.onFlightToClick()
         }
-        button_search.setOnClickListener { motion.transitionToEnd() }
+        button_search.setOnClickListener {
+            viewModel.search()
+            motion.transitionToEnd()
+        }
         button_close.setOnClickListener { motion.transitionToStart() }
+        recyclerView_flights.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = this@SearchFragment.adapter
+            addItemDecoration(FlightViewHolderDecorator(resources))
+        }
         observeViewModel()
+
     }
 
     override fun getComponent(): SearchComponent = SearchComponent.init()
 
     private fun observeViewModel() {
-        viewModel.viewState.observe(this, Observer<SearchViewState> {
+        viewModel.viewState.observe(this) {
             when (it) {
                 is SearchViewState.Entering -> {
                     text_destination_from.text = it.from.name
@@ -72,7 +87,11 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
                     text_destination_to.text = it.to.name
                     text_small_to.text = it.to.shortName
                 }
+                is SearchViewState.Loaded -> {
+                    adapter.flights = it.flights
+                    adapter.notifyDataSetChanged()
+                }
             }
-        })
+        }
     }
 }

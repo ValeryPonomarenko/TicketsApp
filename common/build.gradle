@@ -23,4 +23,5 @@ dependencies {
     implementation deps.appcompat
     implementation deps.viewmodel
     implementation deps.dagger
+    implementation deps.recyclerview
 }

@@ -5,7 +5,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 import me.vponomarenko.tickets.app.common.ViewModelKey
+import me.vponomarenko.ticketsapp.presentation.search.ticket.recycler.FlightsAdapter
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchViewModel
+import javax.inject.Singleton
 
 /**
  * Author: Valery Ponomarenko
@@ -19,4 +21,8 @@ class SearchModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     fun provideViewModel(viewModel: SearchViewModel): ViewModel = viewModel
+
+    @Singleton
+    @Provides
+    fun provideFlightsAdapter() = FlightsAdapter()
 }

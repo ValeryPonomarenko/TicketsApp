@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/right_round_corners"
-    android:paddingBottom="16dp">
+    android:background="@drawable/right_round_corners">
 
 
     <TextView
@@ -60,6 +59,7 @@
 
     <TextView
         android:id="@+id/text_to"
+        style="@style/TextAppearance.Destination.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/text_time_to"
@@ -84,9 +84,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/select"
         app:backgroundTint="@color/colorShamrock"
         app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_dashed_line" />
 
@@ -96,19 +98,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        tools:text="1290$"
         app:layout_constraintBottom_toBottomOf="@+id/materialButton"
         app:layout_constraintEnd_toStartOf="@+id/materialButton"
-        app:layout_constraintTop_toTopOf="@+id/materialButton" />
+        app:layout_constraintTop_toTopOf="@+id/materialButton"
+        tools:text="1290$" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_dashed_line"
-        tools:src="@color/colorEastBay"/>
+        tools:src="@color/colorEastBay" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

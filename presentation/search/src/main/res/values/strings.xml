@@ -4,4 +4,6 @@
     <string name="to">Flying to</string>
     <string name="search_flights">Search Flights</string>
     <string name="select">Select</string>
+
+    <string name="date_format_short">HH:mm</string>
 </resources>

@@ -4,6 +4,6 @@ import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.domain.search.data.City
 
 class CityEntityToCity {
-    fun map(cityEntity: CityEntity): City =
+    fun map(cityEntity: CityEntity) =
         City(cityEntity.name, cityEntity.shortName)
 }

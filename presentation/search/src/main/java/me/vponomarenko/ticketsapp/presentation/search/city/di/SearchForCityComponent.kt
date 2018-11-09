@@ -2,13 +2,13 @@ package me.vponomarenko.ticketsapp.presentation.search.city.di
 
 import dagger.Component
 import me.vponomarenko.injectionmanager.x.XInjectionManager
-import me.vponomarenko.ticketsapp.domain.search.di.deps.DomainSearchForCitiesDepsOut
+import me.vponomarenko.ticketsapp.domain.search.di.deps.DomainSearchDepsOut
 import me.vponomarenko.ticketsapp.presentation.search.city.view.DestinationFragment
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [DomainSearchForCitiesDepsOut::class, SearchForCityComponentDepsIn::class],
+    dependencies = [DomainSearchDepsOut::class, SearchForCityComponentDepsIn::class],
     modules = [SearchForCityModule::class]
 )
 interface SearchForCityComponent {
@@ -16,8 +16,8 @@ interface SearchForCityComponent {
     companion object {
         fun init(): SearchForCityComponent =
             DaggerSearchForCityComponent.builder()
-                .domainSearchForCitiesDepsOut(XInjectionManager.instance.findComponent())
-                .searchForCityComponentDepsIn(XInjectionManager.instance.findComponent())
+                .domainSearchDepsOut(XInjectionManager.findComponent())
+                .searchForCityComponentDepsIn(XInjectionManager.findComponent())
                 .build()
     }
 }

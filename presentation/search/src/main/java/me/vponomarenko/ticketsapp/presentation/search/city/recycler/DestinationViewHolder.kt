@@ -19,7 +19,7 @@ class DestinationViewHolder(
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     companion object {
-        fun create(inflater: LayoutInflater, container: ViewGroup): DestinationViewHolder =
+        fun create(inflater: LayoutInflater, container: ViewGroup) =
             DestinationViewHolder(inflater.inflate(R.layout.item_destination, container, false))
     }
 
