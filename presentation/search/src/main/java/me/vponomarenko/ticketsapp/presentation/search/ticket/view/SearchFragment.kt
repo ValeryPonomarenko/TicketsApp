@@ -57,6 +57,7 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
             viewModel.onFlightToClick()
         }
         button_search.setOnClickListener { motion.transitionToEnd() }
+        button_close.setOnClickListener { motion.transitionToStart() }
         observeViewModel()
     }
 

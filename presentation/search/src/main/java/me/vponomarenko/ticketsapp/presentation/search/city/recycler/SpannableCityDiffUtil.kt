@@ -18,8 +18,8 @@ class SpannableCityDiffUtil(
     override fun getNewListSize() = new.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-        old[oldItemPosition].city.toString() == new[newItemPosition].city.toString()
+        old[oldItemPosition].city == new[newItemPosition].city
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-        old[oldItemPosition].city == new[newItemPosition].city
+        old[oldItemPosition].spannable == new[newItemPosition].spannable
 }

@@ -94,6 +94,7 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
             adapter = this@DestinationFragment.adapter
             (itemAnimator as? DefaultItemAnimator)?.supportsChangeAnimations = false
         }
+        adapter.onClickListener = viewModel::onDestinationSelected
         button_close.setOnClickListener {
             viewModel.back()
         }

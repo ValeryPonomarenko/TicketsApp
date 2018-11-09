@@ -23,8 +23,11 @@ class DestinationViewHolder(
             DestinationViewHolder(inflater.inflate(R.layout.item_destination, container, false))
     }
 
-    fun onBind(city: SpannableCity) {
-        text_destination_name.text = city.city
+    fun onBind(city: SpannableCity, onClickListener: OnDestinationClick) {
+        text_destination_name.text = city.spannable
+        containerView.setOnClickListener {
+            onClickListener(city)
+        }
     }
 
 }

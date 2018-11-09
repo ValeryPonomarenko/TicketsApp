@@ -145,5 +145,15 @@
         app:layout_constraintTop_toTopOf="@+id/text_small_from"
         tools:text="NYC" />
 
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/white_circular_ripple"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

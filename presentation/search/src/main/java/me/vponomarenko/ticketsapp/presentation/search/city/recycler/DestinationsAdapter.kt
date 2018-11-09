@@ -15,13 +15,19 @@ class DestinationsAdapter : RecyclerView.Adapter<DestinationViewHolder>() {
 
     private var destinations = listOf<SpannableCity>()
 
+    var onClickListener: OnDestinationClick? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         DestinationViewHolder.create(LayoutInflater.from(parent.context), parent)
 
     override fun getItemCount() = destinations.size
 
     override fun onBindViewHolder(holder: DestinationViewHolder, position: Int) {
-        destinations.getOrNull(position)?.let { holder.onBind(it) }
+        destinations.getOrNull(position)?.let {
+            holder.onBind(it) {
+                onClickListener?.invoke(it)
+            }
+        }
     }
 
     fun update(destinations: List<SpannableCity>) {

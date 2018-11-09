@@ -40,13 +40,18 @@ class DestinationViewModel @Inject constructor(
         )
     }
 
+    fun onDestinationSelected(city: SpannableCity) {
+        navigation.exitWithResult(city.city)
+    }
+
     fun back() {
         navigation.exit()
     }
 
     private fun mapToSpannableCity(city: City, searchWord: String) =
         SpannableCity(
-            SpannableString(city.name).apply {
+            city,
+            SpannableString("${city.name} (${city.shortName})").apply {
                 indexOf(searchWord, ignoreCase = true).takeIf { it != NO_MATCH }?.let {
                     setSpan(StyleSpan(Typeface.BOLD), it, it + searchWord.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
                 }

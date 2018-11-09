@@ -128,4 +128,11 @@
         android:layout_height="wrap_content"
         tools:text="NYC" />
 
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_circular_ripple"
+        android:src="@drawable/ic_close" />
+
 </androidx.constraintlayout.motion.widget.MotionLayout>
