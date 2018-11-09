@@ -10,4 +10,5 @@ import me.vponomarenko.ticketsapp.domain.search.data.City
 
 interface DestinationNavigation {
     fun exitWithResult(city: City)
+    fun exit()
 }

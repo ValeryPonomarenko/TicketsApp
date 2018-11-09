@@ -33,4 +33,8 @@ class NavigationFacade @Inject constructor(
         cityResultListener = null
         navigatorHolder.consumeCommand(Back())
     }
+
+    override fun exit() {
+        navigatorHolder.consumeCommand(Back())
+    }
 }

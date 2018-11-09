@@ -94,6 +94,9 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
             adapter = this@DestinationFragment.adapter
             (itemAnimator as? DefaultItemAnimator)?.supportsChangeAnimations = false
         }
+        button_close.setOnClickListener {
+            viewModel.back()
+        }
         editText_destination.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {
                 viewModel.search(p0.toString())

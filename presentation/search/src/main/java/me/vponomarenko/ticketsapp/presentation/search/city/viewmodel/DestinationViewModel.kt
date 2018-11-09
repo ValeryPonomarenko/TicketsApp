@@ -40,6 +40,10 @@ class DestinationViewModel @Inject constructor(
         )
     }
 
+    fun back() {
+        navigation.exit()
+    }
+
     private fun mapToSpannableCity(city: City, searchWord: String) =
         SpannableCity(
             SpannableString(city.name).apply {
