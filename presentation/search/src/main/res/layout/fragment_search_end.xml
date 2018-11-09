@@ -9,7 +9,7 @@
     <View
         android:id="@+id/background_search"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="62dp"
         android:background="@drawable/left_bottom_round_corner" />
 
     <LinearLayout
@@ -149,10 +149,10 @@
         android:id="@+id/button_close"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/white_circular_ripple"
         android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@+id/background_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
