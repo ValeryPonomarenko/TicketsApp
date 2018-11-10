@@ -41,6 +41,7 @@ dependencies {
 
     implementation appModules.presentation.search
     implementation appModules.presentation.details
+    implementation appModules.domain.common
     implementation appModules.domain.search
     implementation appModules.domain.details
     implementation appModules.data
@@ -52,6 +53,8 @@ dependencies {
     implementation deps.dagger
     implementation deps.componentsmanager
     kapt annotation.dagger
+    implementation deps.rxjava
+    implementation deps.rxandroid
 
     testImplementation testing.junit
     androidTestImplementation testing.runner

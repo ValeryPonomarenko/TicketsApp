@@ -7,6 +7,7 @@ import android.text.style.StyleSpan
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.Disposable
 import me.vponomarenko.ticketsapp.domain.search.SearchForCityUseCase
 import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
@@ -29,15 +30,25 @@ class DestinationViewModel @Inject constructor(
         private const val NO_MATCH = -1
     }
 
-    private val _viewState = MutableLiveData<DestinationViewState>()
-
     val viewState: LiveData<DestinationViewState>
         get() = _viewState
 
+    private var disposable: Disposable? = null
+
+    private val _viewState = MutableLiveData<DestinationViewState>()
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable?.dispose()
+    }
+
     fun search(cityName: String) {
-        _viewState.value = DestinationViewState.Loaded(
-            searchForCityUseCase(cityName).map { mapToSpannableCity(it, cityName) }
-        )
+        disposable?.dispose()
+        disposable = searchForCityUseCase(cityName)
+            .map { it.map { city -> mapToSpannableCity(city, cityName) } }
+            .subscribe { cities: List<SpannableCity> ->
+                _viewState.value = DestinationViewState.Loaded(cities)
+            }
     }
 
     fun onDestinationSelected(city: SpannableCity) {

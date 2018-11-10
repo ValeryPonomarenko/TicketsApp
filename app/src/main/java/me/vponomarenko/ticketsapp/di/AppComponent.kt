@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import me.vponomarenko.ticketsapp.MainActivity
+import me.vponomarenko.ticketsapp.domain.common.di.SchedulersDepsIn
 import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityComponentDepsIn
 import me.vponomarenko.ticketsapp.presentation.search.ticket.di.SearchComponentDepsIn
 import javax.inject.Singleton
@@ -18,7 +19,7 @@ import javax.inject.Singleton
 @Component(
     modules = [AppModule::class]
 )
-interface AppComponent : SearchComponentDepsIn, SearchForCityComponentDepsIn {
+interface AppComponent : SearchComponentDepsIn, SearchForCityComponentDepsIn, SchedulersDepsIn {
     companion object {
         fun init(context: Context): AppComponent = DaggerAppComponent.builder().context(context).build()
     }

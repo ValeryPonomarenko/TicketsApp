@@ -33,6 +33,7 @@ dependencies {
     implementation deps.recyclerview
     implementation deps.dagger
     implementation deps.componentsmanager
-    implementation deps.viewmodel
     kapt annotation.dagger
+    implementation deps.viewmodel
+    implementation deps.rxjava
 }

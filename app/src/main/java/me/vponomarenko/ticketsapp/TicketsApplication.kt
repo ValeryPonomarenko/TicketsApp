@@ -31,7 +31,10 @@ class TicketsApplication : Application() {
             bindComponentToCustomLifecycle(
                 object : IHasComponent<DomainSearchComponent> {
                     override fun getComponent(): DomainSearchComponent =
-                        DomainSearchComponent.init(XInjectionManager.instance.findComponent())
+                        DomainSearchComponent.init(
+                            XInjectionManager.findComponent(),
+                            XInjectionManager.findComponent()
+                        )
                 }
             )
         }

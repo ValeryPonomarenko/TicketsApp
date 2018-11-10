@@ -11,6 +11,8 @@ include ':domain_search'
 project(':domain_search').projectDir = new File(rootDir, 'domain/search')
 include ':domain_details'
 project(':domain_details').projectDir = new File(rootDir, 'domain/details')
+include ':domain_common'
+project(':domain_common').projectDir = new File(rootDir, 'domain/domain_common')
 
 //data
 include ':data'

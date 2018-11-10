@@ -24,4 +24,5 @@ dependencies {
     implementation deps.viewmodel
     implementation deps.dagger
     implementation deps.recyclerview
+    implementation deps.rxjava
 }

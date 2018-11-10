@@ -5,7 +5,8 @@ ext.appModules = [
         ],
         domain      : [
                 search : project(':domain_search'),
-                details: project(':domain_details')
+                details: project(':domain_details'),
+                common : project(':domain_common')
         ],
         data        : project(':data'),
         common      : project(':common')

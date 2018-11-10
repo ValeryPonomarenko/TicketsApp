@@ -5,9 +5,8 @@ sourceSets.main.java.srcDirs = ['build/generated/source/kapt/main','src/main/jav
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation appModules.domain.common
 
     implementation deps.kotlin
     implementation deps.dagger
-    kapt annotation.dagger
+    implementation deps.rxjava
 }
