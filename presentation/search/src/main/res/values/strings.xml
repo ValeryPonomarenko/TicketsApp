@@ -6,4 +6,6 @@
     <string name="select">Select</string>
 
     <string name="date_format_short">HH:mm</string>
+    <string name="duration_format_short">%dh %dm</string>
+    <string name="cost_format">$%d</string>
 </resources>

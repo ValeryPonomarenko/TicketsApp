@@ -12,6 +12,8 @@ import me.vponomarenko.ticketsapp.presentation.search.R
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+
+
 /**
  * Author: Valery Ponomarenko
  * Date: 10/11/2018
@@ -28,14 +30,17 @@ class FlightViewHolder(
     }
 
     fun onBind(flight: Flight) {
-        with (SimpleDateFormat(getString(R.string.date_format_short), Locale.getDefault())) {
+        with(SimpleDateFormat(getString(R.string.date_format_short), Locale.getDefault())) {
             text_time_from.text = format(flight.dateFrom)
             text_time_to.text = format(flight.dateTo)
         }
         text_from.text = flight.from.shortName
         text_to.text = flight.to.shortName
-        text_price.text = flight.cost.toString()
-        text_duration.text = ""
+        text_price.text = getString(R.string.cost_format, flight.cost)
+        val diff = flight.dateTo.time - flight.dateFrom.time
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        val hours = minutes / 60
+        text_duration.text = getString(R.string.duration_format_short, hours, minutes - hours * 60)
     }
-
 }
