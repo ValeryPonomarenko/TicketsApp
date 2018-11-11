@@ -7,12 +7,14 @@ import android.text.style.StyleSpan
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import me.vponomarenko.ticketsapp.domain.search.SearchForCityUseCase
 import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation
 import me.vponomarenko.ticketsapp.presentation.search.city.recycler.SpannableCity
 import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.DestinationViewState
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -28,6 +30,7 @@ class DestinationViewModel @Inject constructor(
 
     companion object {
         private const val NO_MATCH = -1
+        private const val DEBOUNCE_TIMEOUT = 500L
     }
 
     val viewState: LiveData<DestinationViewState>
@@ -42,12 +45,14 @@ class DestinationViewModel @Inject constructor(
         disposable?.dispose()
     }
 
-    fun search(cityName: String) {
+    fun observeSearchChanges(observable: Observable<String>) {
         disposable?.dispose()
-        disposable = searchForCityUseCase(cityName)
-            .map { it.map { city -> mapToSpannableCity(city, cityName) } }
-            .subscribe { cities: List<SpannableCity> ->
-                _viewState.value = DestinationViewState.Loaded(cities)
+        disposable = observable
+            .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
+            .flatMap { cityName -> searchForCityUseCase(cityName).toObservable().map { cityName to it } }
+            .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }
+            .subscribe {
+                _viewState.value = DestinationViewState.Loaded(it)
             }
     }
 
