@@ -36,4 +36,6 @@ dependencies {
     kapt annotation.dagger
     implementation deps.viewmodel
     implementation deps.rxjava
+
+    testImplementation testing.junit
 }
