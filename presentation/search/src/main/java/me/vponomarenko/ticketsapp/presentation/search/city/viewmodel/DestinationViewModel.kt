@@ -30,7 +30,7 @@ class DestinationViewModel @Inject constructor(
 
     companion object {
         private const val NO_MATCH = -1
-        private const val DEBOUNCE_TIMEOUT = 500L
+        private const val DEBOUNCE_TIMEOUT = 300L
     }
 
     val viewState: LiveData<DestinationViewState>
@@ -48,6 +48,7 @@ class DestinationViewModel @Inject constructor(
     fun observeSearchChanges(observable: Observable<String>) {
         disposable?.dispose()
         disposable = observable
+            .filter { it.isNotEmpty() }
             .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
             .flatMap { cityName -> searchForCityUseCase(cityName).toObservable().map { cityName to it } }
             .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }

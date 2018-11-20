@@ -4,6 +4,7 @@ import me.vponomarenko.ticketsapp.data.IDataSource
 import me.vponomarenko.ticketsapp.data.mappers.FlightEntityToFlight
 import me.vponomarenko.ticketsapp.domain.search.api.IFlightsRepository
 import me.vponomarenko.ticketsapp.domain.search.data.City
+import javax.inject.Inject
 
 /**
  * Author: Valery Ponomarenko
@@ -11,7 +12,7 @@ import me.vponomarenko.ticketsapp.domain.search.data.City
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class FlightsRepository(
+class FlightsRepository @Inject constructor(
     private val dataSource: IDataSource,
     private val flightEntityToFlight: FlightEntityToFlight
 ) : IFlightsRepository {

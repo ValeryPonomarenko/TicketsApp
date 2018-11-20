@@ -22,13 +22,14 @@ class DataSource : IDataSource {
             CityEntity("Milan", "BGY"),
             CityEntity("Atlanta", "ATL")
         ).filter { it.name.contains(name, true) || it.shortName.contains(name, true) }
+            .also { Thread.sleep(2000) }
 
     override fun getFlights(from: City, to: City): List<FlightEntity> {
         val random = Random()
         val count = random.nextInt(15)
         val now = Date().time
         return mutableListOf<FlightEntity>().apply {
-            for(i in 0..count) {
+            for (i in 0..count) {
                 add(
                     FlightEntity(
                         Date(now - random.nextInt(10000000)),

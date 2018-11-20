@@ -8,6 +8,8 @@ ext.appModules = [
                 details: project(':domain_details'),
                 common : project(':domain_common')
         ],
-        data        : project(':data'),
+        data        : [
+                data : project(':data')
+        ],
         common      : project(':common')
 ]

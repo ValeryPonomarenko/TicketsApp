@@ -44,7 +44,7 @@ dependencies {
     implementation appModules.domain.common
     implementation appModules.domain.search
     implementation appModules.domain.details
-    implementation appModules.data
+    implementation appModules.data.data
     implementation appModules.common
 
     implementation deps.kotlin

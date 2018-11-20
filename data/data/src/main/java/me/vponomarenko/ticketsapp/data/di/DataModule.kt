@@ -1,11 +1,11 @@
 package me.vponomarenko.ticketsapp.data.di
 
+import android.util.LruCache
 import dagger.Module
 import dagger.Provides
 import me.vponomarenko.ticketsapp.data.DataSource
 import me.vponomarenko.ticketsapp.data.IDataSource
-import me.vponomarenko.ticketsapp.data.mappers.CityEntityToCity
-import me.vponomarenko.ticketsapp.data.mappers.FlightEntityToFlight
+import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.data.repositories.CitiesRepository
 import me.vponomarenko.ticketsapp.data.repositories.FlightsRepository
 import me.vponomarenko.ticketsapp.domain.search.api.ICitiesRepository
@@ -21,11 +21,14 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideCitiesRepository(dataSource: IDataSource, mapper: CityEntityToCity): ICitiesRepository =
-        CitiesRepository(dataSource, mapper)
+    fun provideCitiesRepository(repository: CitiesRepository): ICitiesRepository = repository
 
     @Singleton
     @Provides
-    fun provideFlightsRepository(dataSource: IDataSource, mapper: FlightEntityToFlight): IFlightsRepository =
-        FlightsRepository(dataSource, mapper)
+    fun provideFlightsRepository(repository: FlightsRepository): IFlightsRepository = repository
+
+    @Singleton
+    @Provides
+    fun provideCityEntityCache() = LruCache<String, List<CityEntity>>(5)
+
 }
