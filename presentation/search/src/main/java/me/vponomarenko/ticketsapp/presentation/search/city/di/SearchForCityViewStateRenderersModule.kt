@@ -30,14 +30,14 @@ class SearchForCityViewStateRenderersModule {
     @Singleton
     @Provides
     @IntoSet
-    fun provideEmptyQueryViewStateRenderer(): DestinationViewStateRendererPair =
-        EmptyQueryViewStateRenderer::class to EmptyQueryViewStateRenderer()
+    fun provideEmptyQueryViewStateRenderer(adapter: DestinationsAdapter): DestinationViewStateRendererPair =
+        EmptyQueryViewStateRenderer::class to EmptyQueryViewStateRenderer(adapter)
 
     @Singleton
     @Provides
     @IntoSet
-    fun provideEmptyViewStateRenderer(): DestinationViewStateRendererPair =
-        EmptyViewStateRenderer::class to EmptyViewStateRenderer()
+    fun provideEmptyViewStateRenderer(adapter: DestinationsAdapter): DestinationViewStateRendererPair =
+        EmptyViewStateRenderer::class to EmptyViewStateRenderer(adapter)
 
     @Singleton
     @Provides

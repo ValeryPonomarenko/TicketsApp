@@ -22,7 +22,6 @@ class DataSource : IDataSource {
             CityEntity("Milan", "BGY"),
             CityEntity("Atlanta", "ATL")
         ).filter { it.name.contains(name, true) || it.shortName.contains(name, true) }
-            .also { Thread.sleep(2000) }
 
     override fun getFlights(from: City, to: City): List<FlightEntity> {
         val random = Random()

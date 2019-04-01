@@ -16,7 +16,12 @@ class SearchForCityUseCase @Inject constructor(
     @UiScheduler private val uiScheduler: Scheduler
 ) {
     operator fun invoke(name: String): Single<List<City>> =
-        citiesRepository.loadCities(name)
-            .subscribeOn(ioScheduler)
-            .observeOn(uiScheduler)
+        if (name.isBlank()) {
+            Single.just(emptyList())
+        } else {
+            citiesRepository.loadCities(name)
+        }.apply {
+            subscribeOn(ioScheduler)
+            observeOn(uiScheduler)
+        }
 }

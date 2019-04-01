@@ -14,5 +14,6 @@ import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.Destination
 class LoadingViewStateRenderer : ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {
         view.progress.visibility = View.VISIBLE
+        view.text_message.visibility = View.GONE
     }
 }

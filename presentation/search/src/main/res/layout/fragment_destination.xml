@@ -60,21 +60,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/group_destination"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/background_destination"
-        app:layout_constraintVertical_bias="0.6"
         tools:listitem="@layout/item_destination" />
 
     <ProgressBar
         android:id="@+id/progress"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/background_destination" />
+        app:layout_constraintTop_toBottomOf="@+id/background_destination" />
 
     <TextView
         android:id="@+id/text_message"

@@ -7,6 +7,7 @@ import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.data.mappers.CityEntityToCity
 import me.vponomarenko.ticketsapp.domain.search.api.ICitiesRepository
 import me.vponomarenko.ticketsapp.domain.search.data.City
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class CitiesRepository @Inject constructor(
@@ -23,4 +24,5 @@ class CitiesRepository @Inject constructor(
                 }
             }
             .map { it.map(mapper::map) }
+            .delay(2, TimeUnit.SECONDS)
 }
