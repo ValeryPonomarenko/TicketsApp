@@ -40,6 +40,10 @@ class DestinationViewModel @Inject constructor(
 
     private val _viewState = MutableLiveData<DestinationViewState>()
 
+    init {
+        _viewState.value = DestinationViewState()
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposable?.dispose()
@@ -48,12 +52,16 @@ class DestinationViewModel @Inject constructor(
     fun observeSearchChanges(observable: Observable<String>) {
         disposable?.dispose()
         disposable = observable
+            .doOnNext { _viewState.value?.copy(query = it) }
             .filter { it.isNotEmpty() }
             .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
-            .flatMap { cityName -> searchForCityUseCase(cityName).toObservable().map { cityName to it } }
+            .flatMap { cityName ->
+                _viewState.postValue(_viewState.value?.copy(isLoading = true))
+                searchForCityUseCase(cityName).toObservable().map { cityName to it }
+            }
             .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }
             .subscribe {
-                _viewState.value = DestinationViewState.Loaded(it)
+                _viewState.value = _viewState.value?.copy(destinations = it)
             }
     }
 

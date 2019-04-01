@@ -9,7 +9,7 @@ ext.appModules = [
                 common : project(':domain_common')
         ],
         data        : [
-                data : project(':data')
+                data: project(':data')
         ],
         common      : project(':common')
 ]

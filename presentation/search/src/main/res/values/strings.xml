@@ -8,4 +8,7 @@
     <string name="date_format_short">HH:mm</string>
     <string name="duration_format_short">%dh %dm</string>
     <string name="cost_format">$%d</string>
+
+    <string name="empty_query_message">Enter the city you want to flight</string>
+    <string name="empty_search">Oooops! Do you really want to travel to %s?</string>
 </resources>

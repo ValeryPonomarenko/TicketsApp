@@ -4,12 +4,11 @@ import me.vponomarenko.ticketsapp.presentation.search.city.recycler.SpannableCit
 
 /**
  * Author: Valery Ponomarenko
- * Date: 01/04/2019
+ * Date: 08/11/2018
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-data class DestinationViewState(
-    val destinations: List<SpannableCity> = listOf(),
-    val query: String = "",
-    val isLoading: Boolean = false
-)
+sealed class DestinationViewStateOld {
+    object Loading : DestinationViewStateOld()
+    data class Loaded(val destinations: List<SpannableCity>) : DestinationViewStateOld()
+}

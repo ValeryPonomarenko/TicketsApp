@@ -16,6 +16,7 @@ import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
 import me.vponomarenko.tickets.app.common.ext.addTextChangedObservable
 import me.vponomarenko.tickets.app.common.ext.observe
+import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.city.animation.DestinationFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.city.di.SearchForCityComponent
@@ -46,6 +47,9 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
 
+    @Inject
+    internal lateinit var renderer: Renderer<DestinationViewState>
+
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(DestinationViewModel::class.java)
     }
@@ -55,9 +59,7 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        XInjectionManager.instance
-            .bindComponent(this)
-            .inject(this)
+        XInjectionManager.bindComponent(this).inject(this)
         postponeEnterTransition()
         TransitionInflater.from(requireContext()).apply {
             this@DestinationFragment.sharedElementEnterTransition = inflateTransition(android.R.transition.move)
@@ -73,14 +75,14 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        prepareView()
+        prepareView(view)
         sharedUiAnimator.animateDestination(group_destination)
         startPostponedEnterTransition()
     }
 
     override fun getComponent() = SearchForCityComponent.init()
 
-    private fun prepareView() {
+    private fun prepareView(view: View) {
         editText_destination.hint = if (isFrom) getString(R.string.from) else getString(R.string.to)
         image_destination.setImageDrawable(
             ContextCompat.getDrawable(
@@ -98,10 +100,8 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
             viewModel.back()
         }
         viewModel.observeSearchChanges(editText_destination.addTextChangedObservable())
-        viewModel.viewState.observe(this) {
-            when (it) {
-                is DestinationViewState.Loaded -> adapter.update(it.destinations)
-            }
+        viewModel.viewState.observe(viewLifecycleOwner) {
+            renderer.render(view, it)
         }
     }
 }
