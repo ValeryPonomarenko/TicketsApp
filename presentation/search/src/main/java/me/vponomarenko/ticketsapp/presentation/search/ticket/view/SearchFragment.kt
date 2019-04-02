@@ -12,6 +12,7 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
 import me.vponomarenko.tickets.app.common.ext.observe
+import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.ticket.animation.SearchFragmentSharedUiAnimator
 import me.vponomarenko.ticketsapp.presentation.search.ticket.di.SearchComponent
@@ -31,6 +32,9 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
 
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    internal lateinit var renderer: Renderer<SearchViewState>
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
@@ -64,34 +68,21 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
         }
         button_search.setOnClickListener {
             viewModel.search()
-            motion.transitionToEnd()
+//            motion.transitionToEnd()
         }
-        button_close.setOnClickListener { motion.transitionToStart() }
+        button_close.setOnClickListener {
+            viewModel.changeSearch()
+//            motion.transitionToStart()
+        }
         recyclerView_flights.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@SearchFragment.adapter
             addItemDecoration(FlightViewHolderDecorator(resources))
         }
-        observeViewModel()
-
+        viewModel.viewState.observe(this) {
+            renderer.render(view, it)
+        }
     }
 
     override fun getComponent(): SearchComponent = SearchComponent.init()
-
-    private fun observeViewModel() {
-        viewModel.viewState.observe(this) {
-            when (it) {
-                is SearchViewState.Entering -> {
-                    text_destination_from.text = it.from.name
-                    text_small_from.text = it.from.shortName
-                    text_destination_to.text = it.to.name
-                    text_small_to.text = it.to.shortName
-                }
-                is SearchViewState.Loaded -> {
-                    adapter.flights = it.flights
-                    adapter.notifyDataSetChanged()
-                }
-            }
-        }
-    }
 }

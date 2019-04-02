@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import me.vponomarenko.ticketsapp.domain.search.SearchForFlightsUseCase
-import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
@@ -25,37 +24,42 @@ class SearchViewModel @Inject constructor(
     val viewState: LiveData<SearchViewState>
         get() = _viewState
 
-    private var destinations: Pair<City?, City?> = Pair(null, null)
+    private lateinit var searchViewState: SearchViewState
 
     init {
-        setDestinations()
+        updateViewState(SearchViewState())
     }
 
     fun onDepartingFromClick() {
+        updateViewState(searchViewState.copy(isEntering = true))
         navigation.openDestinationSearch(true) {
-            destinations = Pair(it, destinations.second)
-            setDestinations(it, (_viewState.value as? SearchViewState.Entering)?.to)
+            updateViewState(searchViewState.copy(from = it))
         }
     }
 
     fun onFlightToClick() {
+        updateViewState(searchViewState.copy(isEntering = true))
         navigation.openDestinationSearch(false) {
-            destinations = Pair(destinations.first, it)
-            setDestinations((_viewState.value as? SearchViewState.Entering)?.from, it)
+            updateViewState(searchViewState.copy(isEntering = true, to = it))
         }
     }
 
     fun search() {
-        val (from, to) = destinations
+        val (from, to) = Pair(searchViewState.from, searchViewState.to)
         if (from != null && to != null) {
-            _viewState.value = SearchViewState.Loaded(searchForFlightsUseCase(from, to))
+            updateViewState(searchViewState.copy(isEntering = false, isLoading = true))
+            updateViewState(searchViewState.copy(flights = searchForFlightsUseCase(from, to)))
+        } else {
+            updateViewState(searchViewState.copy(isEntering = false))
         }
     }
 
-    private fun setDestinations(from: City? = null, to: City? = null) {
-        _viewState.value = SearchViewState.Entering(
-            from ?: City("", ""),
-            to ?: City("", "")
-        )
+    fun changeSearch() {
+        updateViewState(searchViewState.copy(isEntering = true))
+    }
+
+    private fun updateViewState(viewState: SearchViewState) {
+        searchViewState = viewState
+        _viewState.postValue(viewState)
     }
 }

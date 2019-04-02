@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     dependencies = [DomainSearchDepsOut::class, SearchComponentDepsIn::class],
-    modules = [SearchModule::class]
+    modules = [SearchModule::class, SearchViewStateRenderersModule::class]
 )
 interface SearchComponent {
 
