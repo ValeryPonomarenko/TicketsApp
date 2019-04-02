@@ -5,9 +5,6 @@ import dagger.Provides
 import dagger.multibindings.IntoSet
 import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRenderer
-import me.vponomarenko.ticketsapp.presentation.search.city.renderer.DestinationViewStateRendererPicker
-import me.vponomarenko.ticketsapp.presentation.search.city.renderer.states.EmptyQueryViewStateRenderer
-import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.DestinationViewState
 import me.vponomarenko.ticketsapp.presentation.search.ticket.recycler.FlightsAdapter
 import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.SearchViewStateRendererPicker
 import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.EnteringViewStateRenderer
@@ -39,8 +36,8 @@ class SearchViewStateRenderersModule {
 	@Singleton
 	@Provides
 	@IntoSet
-	fun provideLoadingViewStateRenderer(): SearchViewStateRendererPair =
-			LoadingViewStateRenderer::class to LoadingViewStateRenderer()
+	fun provideLoadingViewStateRenderer(adapter: FlightsAdapter): SearchViewStateRendererPair =
+			LoadingViewStateRenderer::class to LoadingViewStateRenderer(adapter)
 
 	@Singleton
 	@Provides

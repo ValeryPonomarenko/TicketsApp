@@ -58,6 +58,7 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
 
         sharedUiAnimator.prepareFrom(group_destination_from)
         sharedUiAnimator.prepareTo(group_destination_to)
+
         group_destination_from.setOnClickListener {
             sharedUiAnimator.share(it)
             viewModel.onDepartingFromClick()
@@ -66,14 +67,10 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
             sharedUiAnimator.share(it)
             viewModel.onFlightToClick()
         }
-        button_search.setOnClickListener {
-            viewModel.search()
-//            motion.transitionToEnd()
-        }
-        button_close.setOnClickListener {
-            viewModel.changeSearch()
-//            motion.transitionToStart()
-        }
+
+        button_search.setOnClickListener { viewModel.search() }
+        button_close.setOnClickListener { viewModel.changeSearch() }
+
         recyclerView_flights.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@SearchFragment.adapter

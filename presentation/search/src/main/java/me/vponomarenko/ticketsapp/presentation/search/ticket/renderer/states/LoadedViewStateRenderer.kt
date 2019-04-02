@@ -7,10 +7,10 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.recycler.FlightsAda
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 
 class LoadedViewStateRenderer(private val adapter: FlightsAdapter) : ViewStateRenderer<SearchViewState> {
-	override fun render(view: View, viewState: SearchViewState) {
-		view.motion.transitionToEnd()
-		adapter.flights = viewState.flights
-		adapter.notifyDataSetChanged()
-	}
-
+    override fun render(view: View, viewState: SearchViewState) {
+        view.progress.visibility = View.GONE
+        adapter.flights = viewState.flights
+        adapter.notifyDataSetChanged()
+        view.motion.transitionToEnd()
+    }
 }

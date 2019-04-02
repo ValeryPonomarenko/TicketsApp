@@ -1,5 +1,6 @@
 package me.vponomarenko.ticketsapp.domain.search.api
 
+import io.reactivex.Single
 import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.domain.search.data.Flight
 
@@ -10,5 +11,5 @@ import me.vponomarenko.ticketsapp.domain.search.data.Flight
  */
 
 interface IFlightsRepository {
-    fun loadFlights(from: City, to: City): List<Flight>
+    fun loadFlights(from: City, to: City): Single<List<Flight>>
 }

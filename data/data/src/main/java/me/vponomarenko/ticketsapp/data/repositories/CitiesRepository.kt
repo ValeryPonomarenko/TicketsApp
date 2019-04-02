@@ -24,5 +24,5 @@ class CitiesRepository @Inject constructor(
                 }
             }
             .map { it.map(mapper::map) }
-            .delay(2, TimeUnit.SECONDS)
+            .delay(1, TimeUnit.SECONDS)
 }

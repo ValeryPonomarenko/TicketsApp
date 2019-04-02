@@ -32,9 +32,7 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
 
         fun newInstance(isFrom: Boolean): Fragment =
             DestinationFragment().apply {
-                val args = Bundle()
-                args.putBoolean(EXTRA_IS_FROM, isFrom)
-                this.arguments = args
+                arguments = Bundle().apply { putBoolean(EXTRA_IS_FROM, isFrom) }
             }
     }
 
@@ -96,9 +94,8 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
             (itemAnimator as? DefaultItemAnimator)?.supportsChangeAnimations = false
         }
         adapter.onClickListener = viewModel::onDestinationSelected
-        button_close.setOnClickListener {
-            viewModel.back()
-        }
+        button_close.setOnClickListener { viewModel.back() }
+
         viewModel.observeSearchChanges(editText_destination.addTextChangedObservable())
         viewModel.viewState.observe(viewLifecycleOwner) {
             renderer.render(view, it)

@@ -7,6 +7,6 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchVie
 class ErrorWhileEnteringViewStateRenderer : EnteringViewStateRenderer() {
 	override fun render(view: View, viewState: SearchViewState) {
 		super.render(view, viewState)
-		Toast.makeText(view.context, "Error!!!", Toast.LENGTH_LONG).show()
+		Toast.makeText(view.context, "Oops! Did you enter all the cities?", Toast.LENGTH_LONG).show()
 	}
 }

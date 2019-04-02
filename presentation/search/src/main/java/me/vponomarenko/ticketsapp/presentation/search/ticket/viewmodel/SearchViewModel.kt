@@ -3,6 +3,7 @@ package me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.Disposable
 import me.vponomarenko.ticketsapp.domain.search.SearchForFlightsUseCase
 import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNavigation
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
@@ -26,8 +27,15 @@ class SearchViewModel @Inject constructor(
 
     private lateinit var searchViewState: SearchViewState
 
+    private var disposable: Disposable? = null
+
     init {
         updateViewState(SearchViewState())
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        disposable?.dispose()
     }
 
     fun onDepartingFromClick() {
@@ -48,14 +56,19 @@ class SearchViewModel @Inject constructor(
         val (from, to) = Pair(searchViewState.from, searchViewState.to)
         if (from != null && to != null) {
             updateViewState(searchViewState.copy(isEntering = false, isLoading = true))
-            updateViewState(searchViewState.copy(flights = searchForFlightsUseCase(from, to)))
+            disposable?.dispose()
+            disposable =
+                searchForFlightsUseCase(from, to)
+                    .subscribe { flights ->
+                        updateViewState(searchViewState.copy(flights = flights, isLoading = false))
+                    }
         } else {
             updateViewState(searchViewState.copy(isEntering = false))
         }
     }
 
     fun changeSearch() {
-        updateViewState(searchViewState.copy(isEntering = true))
+        updateViewState(searchViewState.copy(isEntering = true, isLoading = false))
     }
 
     private fun updateViewState(viewState: SearchViewState) {

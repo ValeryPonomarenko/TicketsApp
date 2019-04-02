@@ -16,7 +16,6 @@ import me.vponomarenko.ticketsapp.presentation.search.city.recycler.SpannableCit
 import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.DestinationViewState
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import kotlin.properties.Delegates
 
 /**
  * Author: Valery Ponomarenko
@@ -54,18 +53,19 @@ class DestinationViewModel @Inject constructor(
 
     fun observeSearchChanges(observable: Observable<String>) {
         disposable?.dispose()
-        disposable = observable
-            .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
-            .doOnNext { updateViewState(destinationViewState.copy(query = it, isLoading = true)) }
-            .flatMap { cityName ->
-                searchForCityUseCase(cityName).toObservable().map { cityName to it }
-            }
-            .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }
-            .subscribe {
-                if (destinationViewState.query.isNotBlank()) {
-                    updateViewState(destinationViewState.copy(destinations = it, isLoading = false))
+        disposable =
+            observable
+                .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
+                .doOnNext { updateViewState(destinationViewState.copy(query = it, isLoading = true)) }
+                .flatMap { cityName ->
+                    searchForCityUseCase(cityName).toObservable().map { cityName to it }
                 }
-            }
+                .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }
+                .subscribe {
+                    if (destinationViewState.query.isNotBlank()) {
+                        updateViewState(destinationViewState.copy(destinations = it, isLoading = false))
+                    }
+                }
     }
 
     fun onDestinationSelected(city: SpannableCity) {
