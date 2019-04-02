@@ -15,6 +15,8 @@ import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.Destination
 class RegularViewStateRenderer(private val adapter: DestinationsAdapter) : ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {
         view.progress.visibility = View.GONE
+        view.text_message.visibility = View.GONE
+        view.recyclerView_destinations.visibility = View.VISIBLE
         adapter.update(viewState.destinations)
     }
 }

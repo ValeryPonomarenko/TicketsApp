@@ -13,11 +13,11 @@ import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.Destination
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class EmptyViewStateRenderer(private val destinationsAdapter: DestinationsAdapter) : ViewStateRenderer<DestinationViewState> {
+class EmptyViewStateRenderer : ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {
         view.text_message.visibility = View.VISIBLE
         view.progress.visibility = View.GONE
+        view.recyclerView_destinations.visibility = View.GONE
         view.text_message.text = view.context.getString(R.string.empty_search, viewState.query)
-        destinationsAdapter.update(emptyList())
     }
 }

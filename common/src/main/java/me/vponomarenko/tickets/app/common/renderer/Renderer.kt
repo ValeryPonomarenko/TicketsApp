@@ -14,8 +14,8 @@ class Renderer<VS>(
     private val renderers: Map<KClass<out ViewStateRenderer<VS>>, ViewStateRenderer<VS>>
 ) {
     fun render(view: View, viewState: VS) {
-        val viewClass = viewStateRendererPicker.pick(viewState)
-        renderers[viewClass]?.render(view, viewState)
-            ?: throw IllegalStateException("There is no ViewStateRenderer for ${viewClass.simpleName}")
+        val rendererClass = viewStateRendererPicker.pick(viewState)
+        renderers[rendererClass]?.render(view, viewState)
+            ?: throw IllegalStateException("There is no ViewStateRenderer for ${rendererClass.simpleName}")
     }
 }
