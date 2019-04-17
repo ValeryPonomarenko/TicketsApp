@@ -2,6 +2,7 @@ package me.vponomarenko.ticketsapp.presentation.search.ticket.renderer
 
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRenderer
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRendererPicker
+import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.EmptyResultStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.EnteringViewStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.ErrorWhileEnteringViewStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.LoadedViewStateRenderer
@@ -16,6 +17,7 @@ class SearchViewStateRendererPicker : ViewStateRendererPicker<SearchViewState> {
             !viewState.isEntering && (viewState.from == null || viewState.to == null) ->
                 ErrorWhileEnteringViewStateRenderer::class
             viewState.isLoading -> LoadingViewStateRenderer::class
+            viewState.flights.isEmpty() -> EmptyResultStateRenderer::class
             else -> LoadedViewStateRenderer::class
         }
 }

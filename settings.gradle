@@ -15,6 +15,3 @@ project(':domain_common').projectDir = new File(rootDir, 'domain/domain_common')
 //data
 include ':data'
 project(':data').projectDir = new File(rootDir, 'data/data')
-
-
-
