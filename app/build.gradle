@@ -39,11 +39,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation appModules.presentation.search
-    implementation appModules.presentation.details
+    implementation appModules.presentation.search_airport
+    implementation appModules.presentation.search_ticket
     implementation appModules.domain.common
     implementation appModules.domain.search
-    implementation appModules.domain.details
     implementation appModules.data.data
     implementation appModules.common
 

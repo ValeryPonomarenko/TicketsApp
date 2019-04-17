@@ -1,16 +1,14 @@
 include ':app', ':common'
 
 //presentation
-include ':presentation_details'
-project(':presentation_details').projectDir = new File(rootDir, 'presentation/details')
-include ':presentation_search'
-project(':presentation_search').projectDir = new File(rootDir, 'presentation/search')
+include ':presentation_search_airport'
+project(':presentation_search_airport').projectDir = new File(rootDir, 'presentation/search_airport')
+include ':presentation_search_ticket'
+project(':presentation_search_ticket').projectDir = new File(rootDir, 'presentation/search_ticket')
 
 //domain
 include ':domain_search'
 project(':domain_search').projectDir = new File(rootDir, 'domain/search')
-include ':domain_details'
-project(':domain_details').projectDir = new File(rootDir, 'domain/details')
 include ':domain_common'
 project(':domain_common').projectDir = new File(rootDir, 'domain/domain_common')
 

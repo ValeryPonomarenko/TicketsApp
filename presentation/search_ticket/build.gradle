@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+androidExtensions {
+    experimental = true
+}
 
 android {
     compileSdkVersion app.compileSdkVersion
@@ -19,8 +23,19 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation appModules.common
     implementation appModules.domain.search
 
     implementation deps.kotlin
     implementation deps.appcompat
+    implementation deps.constraintlayout
+    implementation deps.material
+    implementation deps.recyclerview
+    implementation deps.dagger
+    implementation deps.componentsmanager
+    kapt annotation.dagger
+    implementation deps.viewmodel
+    implementation deps.rxjava
+
+    testImplementation testing.junit
 }

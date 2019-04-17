@@ -8,5 +8,5 @@ dependencies {
 
     implementation deps.kotlin
     implementation deps.dagger
-    implementation deps.rxjava
+    api deps.rxjava
 }

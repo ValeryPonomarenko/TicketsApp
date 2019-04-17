@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:applyMotionScene="true"
+    app:layoutDescription="@xml/search_motion_scene">
+
+    <ImageView
+        android:id="@+id/background_search"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:background="@drawable/left_bottom_round_corner"
+        tools:ignore="ContentDescription"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <LinearLayout
+        android:id="@+id/group_destination_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/white_ripple"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_flight_takeoff"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_destination_from"
+            style="@style/TextAppearance.Destination"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/from" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/group_destination_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group_destination_from"
+        android:foreground="@drawable/white_ripple"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_flight_land"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/text_destination_to"
+            style="@style/TextAppearance.Destination"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/to" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/container_search_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_search"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="-34dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/search_flights"
+            app:backgroundTint="@color/colorTexasRose"
+            app:cornerRadius="34dp"
+            app:icon="@drawable/ic_search" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_flights"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        tools:listitem="@layout/item_flight" />
+
+    <TextView
+        android:id="@+id/text_small_from"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="MSK" />
+
+    <ImageView
+        android:id="@+id/image_airplane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_airplane" />
+
+    <TextView
+        android:id="@+id/text_small_to"
+        style="@style/TextAppearance.Destination.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="NYC" />
+
+    <ImageButton
+        android:id="@+id/button_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/white_circular_ripple"
+        android:src="@drawable/ic_close" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
