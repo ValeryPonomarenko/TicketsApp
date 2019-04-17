@@ -5,6 +5,7 @@ import kotlinx.android.synthetic.main.fragment_destination.view.*
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.DestinationViewState
+import javax.inject.Inject
 
 /**
  * Author: Valery Ponomarenko
@@ -12,7 +13,7 @@ import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.Destination
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class EmptyQueryViewStateRenderer : ViewStateRenderer<DestinationViewState> {
+class EmptyQueryViewStateRenderer @Inject constructor(): ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {
         view.text_message.visibility = View.VISIBLE
         view.progress.visibility = View.GONE

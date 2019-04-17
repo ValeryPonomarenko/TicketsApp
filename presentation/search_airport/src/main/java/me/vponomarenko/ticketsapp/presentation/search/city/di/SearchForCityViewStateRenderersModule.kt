@@ -3,9 +3,9 @@ package me.vponomarenko.ticketsapp.presentation.search.city.di
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoSet
+import me.vponomarenko.tickets.app.common.ext.toPair
 import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRenderer
-import me.vponomarenko.ticketsapp.presentation.search.city.recycler.DestinationsAdapter
 import me.vponomarenko.ticketsapp.presentation.search.city.renderer.DestinationViewStateRendererPicker
 import me.vponomarenko.ticketsapp.presentation.search.city.renderer.states.EmptyQueryViewStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.city.renderer.states.EmptyViewStateRenderer
@@ -30,26 +30,22 @@ class SearchForCityViewStateRenderersModule {
     @Singleton
     @Provides
     @IntoSet
-    fun provideEmptyQueryViewStateRenderer(): DestinationViewStateRendererPair =
-        EmptyQueryViewStateRenderer::class to EmptyQueryViewStateRenderer()
+    fun provideEmptyQueryViewStateRenderer(renderer: EmptyQueryViewStateRenderer) = renderer.toPair()
 
     @Singleton
     @Provides
     @IntoSet
-    fun provideEmptyViewStateRenderer(): DestinationViewStateRendererPair =
-        EmptyViewStateRenderer::class to EmptyViewStateRenderer()
+    fun provideEmptyViewStateRenderer(renderer: EmptyViewStateRenderer) = renderer.toPair()
 
     @Singleton
     @Provides
     @IntoSet
-    fun provideLoadingViewStateRenderer(): DestinationViewStateRendererPair =
-        LoadingViewStateRenderer::class to LoadingViewStateRenderer()
+    fun provideLoadingViewStateRenderer(renderer: LoadingViewStateRenderer) = renderer.toPair()
 
     @Singleton
     @Provides
     @IntoSet
-    fun provideRegularViewStateRenderer(adapter: DestinationsAdapter): DestinationViewStateRendererPair =
-        RegularViewStateRenderer::class to RegularViewStateRenderer(adapter)
+    fun provideRegularViewStateRenderer(renderer: RegularViewStateRenderer) = renderer.toPair()
 
     @Singleton
     @Provides
