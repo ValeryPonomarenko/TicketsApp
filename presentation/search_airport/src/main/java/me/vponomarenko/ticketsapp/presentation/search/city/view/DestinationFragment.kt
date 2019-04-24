@@ -15,7 +15,7 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
 import me.vponomarenko.tickets.app.common.ext.addTextChangedObservable
-import me.vponomarenko.tickets.app.common.ext.observe
+import me.vponomarenko.tickets.app.common.ext.render
 import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.city.animation.DestinationFragmentSharedUiAnimator
@@ -97,8 +97,6 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
         button_close.setOnClickListener { viewModel.back() }
 
         viewModel.observeSearchChanges(editText_destination.addTextChangedObservable())
-        viewModel.viewState.observe(viewLifecycleOwner) {
-            renderer.render(view, it)
-        }
+        viewModel.viewState.render(this, renderer, view)
     }
 }

@@ -12,10 +12,6 @@ import me.vponomarenko.tickets.app.common.renderer.Renderer
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-inline fun <reified T> LiveData<T>.observe(owner: LifecycleOwner, crossinline block: (T) -> Unit) {
-    observe(owner, Observer { block(it) })
-}
-
 inline fun <reified VS> LiveData<VS>.render(owner: LifecycleOwner, renderer: Renderer<VS>, view: View) {
     observe(owner, Observer { renderer.render(view, it) })
 }
