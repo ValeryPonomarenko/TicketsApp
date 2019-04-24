@@ -12,6 +12,7 @@ import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
 import me.vponomarenko.tickets.app.common.ext.observe
+import me.vponomarenko.tickets.app.common.ext.render
 import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.ticketsapp.presentation.search.R
 import me.vponomarenko.ticketsapp.presentation.search.ticket.animation.SearchFragmentSharedUiAnimator
@@ -42,7 +43,7 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        XInjectionManager.instance
+        XInjectionManager
             .bindComponent(this)
             .inject(this)
     }
@@ -76,9 +77,7 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
             adapter = this@SearchFragment.adapter
             addItemDecoration(FlightViewHolderDecorator(resources))
         }
-        viewModel.viewState.observe(this) {
-            renderer.render(view, it)
-        }
+        viewModel.viewState.render(this, renderer, view)
     }
 
     override fun getComponent(): SearchComponent = SearchComponent.init()

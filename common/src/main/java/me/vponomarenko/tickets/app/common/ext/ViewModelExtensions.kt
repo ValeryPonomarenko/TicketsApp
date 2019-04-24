@@ -1,8 +1,10 @@
 package me.vponomarenko.tickets.app.common.ext
 
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import me.vponomarenko.tickets.app.common.renderer.Renderer
 
 /**
  * Author: Valery Ponomarenko
@@ -12,4 +14,8 @@ import androidx.lifecycle.Observer
 
 inline fun <reified T> LiveData<T>.observe(owner: LifecycleOwner, crossinline block: (T) -> Unit) {
     observe(owner, Observer { block(it) })
+}
+
+inline fun <reified VS> LiveData<VS>.render(owner: LifecycleOwner, renderer: Renderer<VS>, view: View) {
+    observe(owner, Observer { renderer.render(view, it) })
 }
