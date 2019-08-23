@@ -14,7 +14,7 @@ import me.vponomarenko.ticketsapp.presentation.search.R
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class DestinationViewHolder(
+internal class DestinationViewHolder(
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 

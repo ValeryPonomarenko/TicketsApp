@@ -1,3 +1,3 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.recycler
 
-typealias OnDestinationClick = (SpannableCity) -> Unit
+internal typealias OnDestinationClick = (SpannableCity) -> Unit

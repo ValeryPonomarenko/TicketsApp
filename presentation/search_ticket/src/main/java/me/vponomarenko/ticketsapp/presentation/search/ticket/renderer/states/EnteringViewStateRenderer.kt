@@ -5,7 +5,7 @@ import kotlinx.android.synthetic.main.fragment_search.view.*
 import me.vponomarenko.tickets.app.common.renderer.ViewStateRenderer
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 
-open class EnteringViewStateRenderer : ViewStateRenderer<SearchViewState> {
+internal open class EnteringViewStateRenderer : ViewStateRenderer<SearchViewState> {
     override fun render(view: View, viewState: SearchViewState) {
         with(view) {
             motion.transitionToStart()

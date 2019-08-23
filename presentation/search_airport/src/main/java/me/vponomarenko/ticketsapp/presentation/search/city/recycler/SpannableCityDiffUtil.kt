@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class SpannableCityDiffUtil(
+internal class SpannableCityDiffUtil(
     private val old: List<SpannableCity>,
     private val new: List<SpannableCity>
 ) : DiffUtil.Callback() {

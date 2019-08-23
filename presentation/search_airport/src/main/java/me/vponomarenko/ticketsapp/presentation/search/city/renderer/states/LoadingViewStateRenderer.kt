@@ -12,7 +12,7 @@ import javax.inject.Inject
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class LoadingViewStateRenderer @Inject constructor() : ViewStateRenderer<DestinationViewState> {
+internal class LoadingViewStateRenderer @Inject constructor() : ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {
         view.progress.visibility = View.VISIBLE
         view.text_message.visibility = View.GONE

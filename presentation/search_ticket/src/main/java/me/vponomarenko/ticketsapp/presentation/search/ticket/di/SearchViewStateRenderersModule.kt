@@ -20,7 +20,7 @@ private typealias SearchViewStateRendererPair =
     Pair<KClass<out ViewStateRenderer<SearchViewState>>, ViewStateRenderer<SearchViewState>>
 
 @Module
-class SearchViewStateRenderersModule {
+internal class SearchViewStateRenderersModule {
 
     @Singleton
     @Provides

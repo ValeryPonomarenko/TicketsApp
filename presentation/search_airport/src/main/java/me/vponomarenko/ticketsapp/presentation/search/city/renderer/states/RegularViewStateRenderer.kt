@@ -13,7 +13,7 @@ import javax.inject.Inject
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class RegularViewStateRenderer @Inject constructor(
+internal class RegularViewStateRenderer @Inject constructor(
     private val adapter: DestinationsAdapter
 ) : ViewStateRenderer<DestinationViewState> {
     override fun render(view: View, viewState: DestinationViewState) {

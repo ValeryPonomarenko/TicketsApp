@@ -12,15 +12,13 @@ import me.vponomarenko.ticketsapp.presentation.search.R
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-
-
 /**
  * Author: Valery Ponomarenko
  * Date: 10/11/2018
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class FlightViewHolder(
+internal class FlightViewHolder(
     override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 

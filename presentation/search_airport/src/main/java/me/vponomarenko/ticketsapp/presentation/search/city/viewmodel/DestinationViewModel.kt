@@ -23,7 +23,7 @@ import javax.inject.Inject
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class DestinationViewModel @Inject constructor(
+internal class DestinationViewModel @Inject constructor(
     private val searchForCityUseCase: SearchForCityUseCase,
     private val navigation: DestinationNavigation
 ) : ViewModel() {
@@ -56,14 +56,24 @@ class DestinationViewModel @Inject constructor(
         disposable =
             observable
                 .debounce(DEBOUNCE_TIMEOUT, TimeUnit.MILLISECONDS)
-                .doOnNext { updateViewState(destinationViewState.copy(query = it, isLoading = true)) }
+                .doOnNext {
+                    updateViewState(
+                        destinationViewState.copy(query = it, isLoading = true)
+                    )
+                }
                 .flatMap { cityName ->
                     searchForCityUseCase(cityName).toObservable().map { cityName to it }
                 }
-                .map { (cityName, cities) -> cities.map { city -> mapToSpannableCity(city, cityName) } }
+                .map { (cityName, cities) ->
+                    cities.map { city ->
+                        mapToSpannableCity(city, cityName)
+                    }
+                }
                 .subscribe {
                     if (destinationViewState.query.isNotBlank()) {
-                        updateViewState(destinationViewState.copy(destinations = it, isLoading = false))
+                        updateViewState(
+                            destinationViewState.copy(destinations = it, isLoading = false)
+                        )
                     }
                 }
     }
@@ -86,7 +96,12 @@ class DestinationViewModel @Inject constructor(
             city,
             SpannableString("${city.name} (${city.shortName})").apply {
                 indexOf(searchWord, ignoreCase = true).takeIf { it != NO_MATCH }?.let {
-                    setSpan(StyleSpan(Typeface.BOLD), it, it + searchWord.length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+                    setSpan(
+                        StyleSpan(Typeface.BOLD),
+                        it,
+                        it + searchWord.length,
+                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+                    )
                 }
             }
         )

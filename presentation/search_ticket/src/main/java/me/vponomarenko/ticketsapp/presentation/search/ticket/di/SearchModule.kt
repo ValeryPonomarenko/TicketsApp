@@ -16,7 +16,7 @@ import javax.inject.Singleton
  */
 
 @Module
-class SearchModule {
+internal class SearchModule {
     @Provides
     @IntoMap
     @ViewModelKey(SearchViewModel::class)

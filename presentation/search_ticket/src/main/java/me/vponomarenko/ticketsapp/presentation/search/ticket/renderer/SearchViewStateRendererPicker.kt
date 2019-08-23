@@ -10,7 +10,7 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.renderer.states.Loa
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import kotlin.reflect.KClass
 
-class SearchViewStateRendererPicker : ViewStateRendererPicker<SearchViewState> {
+internal class SearchViewStateRendererPicker : ViewStateRendererPicker<SearchViewState> {
     override fun pick(viewState: SearchViewState): KClass<out ViewStateRenderer<SearchViewState>> =
         when {
             viewState.isEntering -> EnteringViewStateRenderer::class

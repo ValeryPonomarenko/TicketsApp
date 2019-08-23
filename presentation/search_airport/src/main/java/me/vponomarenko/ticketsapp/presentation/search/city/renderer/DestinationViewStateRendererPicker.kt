@@ -15,7 +15,7 @@ import kotlin.reflect.KClass
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class DestinationViewStateRendererPicker : ViewStateRendererPicker<DestinationViewState> {
+internal class DestinationViewStateRendererPicker : ViewStateRendererPicker<DestinationViewState> {
     override fun pick(viewState: DestinationViewState): KClass<out ViewStateRenderer<DestinationViewState>> =
         when {
             viewState.query.isBlank() -> EmptyQueryViewStateRenderer::class

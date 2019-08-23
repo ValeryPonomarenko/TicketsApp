@@ -25,7 +25,8 @@ import me.vponomarenko.ticketsapp.presentation.search.city.viewmodel.Destination
 import me.vponomarenko.ticketsapp.presentation.search.city.viewstate.DestinationViewState
 import javax.inject.Inject
 
-class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
+class DestinationFragment : Fragment(),
+    IHasComponent<SearchForCityComponent> by SearchForCityComponent.Initializer() {
 
     companion object {
         private const val EXTRA_IS_FROM = "search.city.isFrom"
@@ -60,8 +61,10 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
         XInjectionManager.bindComponent(this).inject(this)
         postponeEnterTransition()
         TransitionInflater.from(requireContext()).apply {
-            this@DestinationFragment.sharedElementEnterTransition = inflateTransition(android.R.transition.move)
-            this@DestinationFragment.sharedElementReturnTransition = inflateTransition(android.R.transition.move)
+            this@DestinationFragment.sharedElementEnterTransition =
+                inflateTransition(android.R.transition.move)
+            this@DestinationFragment.sharedElementReturnTransition =
+                inflateTransition(android.R.transition.move)
         }
     }
 
@@ -77,8 +80,6 @@ class DestinationFragment : Fragment(), IHasComponent<SearchForCityComponent> {
         sharedUiAnimator.animateDestination(group_destination)
         startPostponedEnterTransition()
     }
-
-    override fun getComponent() = SearchForCityComponent.init()
 
     private fun prepareView(view: View) {
         editText_destination.hint = if (isFrom) getString(R.string.from) else getString(R.string.to)

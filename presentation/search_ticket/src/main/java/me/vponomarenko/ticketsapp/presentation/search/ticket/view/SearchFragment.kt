@@ -22,7 +22,7 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.viewmodel.SearchVie
 import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchViewState
 import javax.inject.Inject
 
-class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
+class SearchFragment : Fragment(), IHasComponent<SearchComponent> by SearchComponent.Initializer() {
 
     @Inject
     internal lateinit var sharedUiAnimator: SearchFragmentSharedUiAnimator
@@ -78,6 +78,4 @@ class SearchFragment : Fragment(), IHasComponent<SearchComponent> {
         }
         viewModel.viewState.render(this, renderer, view)
     }
-
-    override fun getComponent(): SearchComponent = SearchComponent.init()
 }

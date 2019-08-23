@@ -11,7 +11,7 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.viewstate.SearchVie
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class EmptyResultStateRenderer(
+internal class EmptyResultStateRenderer(
     private val loadedViewStateRenderer: LoadedViewStateRenderer
 ) : ViewStateRenderer<SearchViewState> {
     override fun render(view: View, viewState: SearchViewState) {

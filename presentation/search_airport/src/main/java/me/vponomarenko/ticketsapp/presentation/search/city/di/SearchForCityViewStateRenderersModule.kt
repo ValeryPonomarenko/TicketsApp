@@ -25,7 +25,7 @@ private typealias DestinationViewStateRendererPair =
     Pair<KClass<out ViewStateRenderer<DestinationViewState>>, ViewStateRenderer<DestinationViewState>>
 
 @Module
-class SearchForCityViewStateRenderersModule {
+internal class SearchForCityViewStateRenderersModule {
 
     @Singleton
     @Provides

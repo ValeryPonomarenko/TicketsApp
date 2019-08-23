@@ -6,7 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import me.vponomarenko.ticketsapp.presentation.search.R
 
-class FlightViewHolderDecorator(resources: Resources): RecyclerView.ItemDecoration() {
+internal class FlightViewHolderDecorator(resources: Resources): RecyclerView.ItemDecoration() {
 
     private val topOffset = resources.getDimension(R.dimen.flight_top_offset).toInt()
 

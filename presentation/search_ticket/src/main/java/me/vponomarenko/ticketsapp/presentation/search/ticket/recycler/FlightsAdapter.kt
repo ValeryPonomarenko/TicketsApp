@@ -11,7 +11,7 @@ import me.vponomarenko.ticketsapp.domain.search.data.Flight
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class FlightsAdapter : RecyclerView.Adapter<FlightViewHolder>() {
+internal class FlightsAdapter : RecyclerView.Adapter<FlightViewHolder>() {
 
     var flights: List<Flight>? = null
 
@@ -21,8 +21,6 @@ class FlightsAdapter : RecyclerView.Adapter<FlightViewHolder>() {
     override fun getItemCount() = flights?.size ?: 0
 
     override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
-        flights?.get(position)?.let {
-            holder.onBind(it)
-        }
+        flights?.get(position)?.let(holder::onBind)
     }
 }

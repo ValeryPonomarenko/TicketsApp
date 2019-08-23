@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class DestinationsAdapter : RecyclerView.Adapter<DestinationViewHolder>() {
+internal class DestinationsAdapter : RecyclerView.Adapter<DestinationViewHolder>() {
 
     private var destinations = listOf<SpannableCity>()
 

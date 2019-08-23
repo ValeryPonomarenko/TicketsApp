@@ -15,7 +15,7 @@ import javax.inject.Inject
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-class SearchViewModel @Inject constructor(
+internal class SearchViewModel @Inject constructor(
     private val searchForFlightsUseCase: SearchForFlightsUseCase,
     private val navigation: SearchNavigation
 ) : ViewModel() {
