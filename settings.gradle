@@ -1,10 +1,12 @@
-include ':app', ':common'
+include ':app'
 
 //presentation
 include ':presentation_search_airport'
 project(':presentation_search_airport').projectDir = new File(rootDir, 'presentation/search_airport')
 include ':presentation_search_ticket'
 project(':presentation_search_ticket').projectDir = new File(rootDir, 'presentation/search_ticket')
+include ':common'
+project(':common').projectDir = new File(rootDir, 'presentation/common')
 
 //domain
 include ':domain_search'
@@ -14,4 +16,3 @@ project(':domain_common').projectDir = new File(rootDir, 'domain/domain_common')
 
 //data
 include ':data'
-project(':data').projectDir = new File(rootDir, 'data/data')
