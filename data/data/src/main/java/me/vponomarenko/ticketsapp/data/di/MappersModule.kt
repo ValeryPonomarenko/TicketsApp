@@ -14,7 +14,7 @@ import javax.inject.Singleton
  */
 
 @Module
-class MappersModule {
+internal class MappersModule {
     @Singleton
     @Provides
     fun provideCityEntityToCity() = CityEntityToCity()

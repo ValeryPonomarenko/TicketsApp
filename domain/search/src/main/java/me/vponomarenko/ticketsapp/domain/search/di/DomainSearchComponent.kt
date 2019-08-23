@@ -1,21 +1,19 @@
 package me.vponomarenko.ticketsapp.domain.search.di
 
 import dagger.Component
-import me.vponomarenko.ticketsapp.domain.common.di.SchedulersDepsIn
-import me.vponomarenko.ticketsapp.domain.search.di.deps.DomainSearchDepsIn
-import me.vponomarenko.ticketsapp.domain.search.di.deps.DomainSearchDepsOut
+import me.vponomarenko.ticketsapp.domain.common.di.SchedulersDeps
 import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [SchedulersDepsIn::class, DomainSearchDepsIn::class]
+    dependencies = [SchedulersDeps::class, DomainSearchDeps::class]
 )
-interface DomainSearchComponent : DomainSearchDepsOut {
+interface DomainSearchComponent : DomainSearchApi {
     companion object {
-        fun init(schedulersDepsIn: SchedulersDepsIn, domainDepsIn: DomainSearchDepsIn): DomainSearchComponent =
+        fun init(schedulersDepsIn: SchedulersDeps, domainDepsIn: DomainSearchDeps): DomainSearchComponent =
             DaggerDomainSearchComponent.builder()
-                .schedulersDepsIn(schedulersDepsIn)
-                .domainSearchDepsIn(domainDepsIn)
+                .schedulersDeps(schedulersDepsIn)
+                .domainSearchDeps(domainDepsIn)
                 .build()
     }
 }

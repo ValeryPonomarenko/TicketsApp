@@ -9,7 +9,7 @@ import me.vponomarenko.ticketsapp.presentation.search.ticket.navigation.SearchNa
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-interface SearchComponentDepsIn {
+interface SearchComponentDeps {
     fun provideSearchNavigation(): SearchNavigation
     fun provideSearchSharedUiAnimator(): SearchFragmentSharedUiAnimator
 }

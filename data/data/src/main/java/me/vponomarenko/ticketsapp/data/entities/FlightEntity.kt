@@ -8,7 +8,7 @@ import java.util.Date
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-data class FlightEntity(
+internal data class FlightEntity(
     val dateFrom: Date,
     val dateTo: Date,
     val from: CityEntity,

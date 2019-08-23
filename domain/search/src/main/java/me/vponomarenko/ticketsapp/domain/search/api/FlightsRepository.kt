@@ -10,6 +10,6 @@ import me.vponomarenko.ticketsapp.domain.search.data.Flight
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-interface IFlightsRepository {
+interface FlightsRepository {
     fun loadFlights(from: City, to: City): Single<List<Flight>>
 }

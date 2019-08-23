@@ -4,7 +4,7 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import me.vponomarenko.ticketsapp.domain.common.di.IoScheduler
 import me.vponomarenko.ticketsapp.domain.common.di.UiScheduler
-import me.vponomarenko.ticketsapp.domain.search.api.IFlightsRepository
+import me.vponomarenko.ticketsapp.domain.search.api.FlightsRepository
 import me.vponomarenko.ticketsapp.domain.search.data.City
 import me.vponomarenko.ticketsapp.domain.search.data.Flight
 import javax.inject.Inject
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 @Singleton
 class SearchForFlightsUseCase @Inject constructor(
-    private val flightRepository: IFlightsRepository,
+    private val flightRepository: FlightsRepository,
     @IoScheduler private val ioScheduler: Scheduler,
     @UiScheduler private val uiScheduler: Scheduler
 ) {

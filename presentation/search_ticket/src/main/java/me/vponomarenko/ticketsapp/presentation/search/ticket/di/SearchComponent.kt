@@ -2,7 +2,7 @@ package me.vponomarenko.ticketsapp.presentation.search.ticket.di
 
 import dagger.Component
 import me.vponomarenko.injectionmanager.x.XInjectionManager
-import me.vponomarenko.ticketsapp.domain.search.di.deps.DomainSearchDepsOut
+import me.vponomarenko.ticketsapp.domain.search.di.DomainSearchApi
 import me.vponomarenko.ticketsapp.presentation.search.ticket.view.SearchFragment
 import javax.inject.Singleton
 
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    dependencies = [DomainSearchDepsOut::class, SearchComponentDepsIn::class],
+    dependencies = [DomainSearchApi::class, SearchComponentDeps::class],
     modules = [SearchModule::class, SearchViewStateRenderersModule::class]
 )
 interface SearchComponent {
@@ -22,8 +22,8 @@ interface SearchComponent {
     companion object {
         fun init(): SearchComponent =
             DaggerSearchComponent.builder()
-                .domainSearchDepsOut(XInjectionManager.findComponent())
-                .searchComponentDepsIn(XInjectionManager.findComponent())
+                .domainSearchApi(XInjectionManager.findComponent())
+                .searchComponentDeps(XInjectionManager.findComponent())
                 .build()
     }
 

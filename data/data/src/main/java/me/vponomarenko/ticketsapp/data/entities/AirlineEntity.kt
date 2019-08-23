@@ -6,7 +6,7 @@ package me.vponomarenko.ticketsapp.data.entities
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-data class AirlineEntity(
+internal data class AirlineEntity(
     val name: String,
     val imageUrl: String
 )

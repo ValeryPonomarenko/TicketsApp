@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import me.vponomarenko.injectionmanager.IHasComponent
 import me.vponomarenko.injectionmanager.x.XInjectionManager
 import me.vponomarenko.tickets.app.common.ViewModelFactory
-import me.vponomarenko.tickets.app.common.ext.observe
 import me.vponomarenko.tickets.app.common.ext.render
 import me.vponomarenko.tickets.app.common.renderer.Renderer
 import me.vponomarenko.ticketsapp.presentation.search.R

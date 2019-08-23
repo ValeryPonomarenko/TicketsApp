@@ -9,7 +9,7 @@ import me.vponomarenko.ticketsapp.presentation.search.city.navigation.Destinatio
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-interface SearchForCityComponentDepsIn {
+interface SearchForCityComponentDeps {
     fun provideDestinationNavigation(): DestinationNavigation
     fun provideDestinationSharedUiAnimator(): DestinationFragmentSharedUiAnimator
 }

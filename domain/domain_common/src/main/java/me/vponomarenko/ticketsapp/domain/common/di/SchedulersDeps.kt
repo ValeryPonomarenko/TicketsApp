@@ -8,7 +8,7 @@ import io.reactivex.Scheduler
  * LinkedIn: https://www.linkedin.com/in/ponomarenkovalery
  */
 
-interface SchedulersDepsIn {
+interface SchedulersDeps {
     @IoScheduler
     fun provideIoScheduler(): Scheduler
     @UiScheduler
