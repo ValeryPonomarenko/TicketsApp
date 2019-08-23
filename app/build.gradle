@@ -4,11 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion app.compileSdkVersion
     defaultConfig {
         applicationId "me.vponomarenko.ticketsapp"
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.compileSdkVersion
         versionCode getVersionCode(app.versionName)
         versionName app.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -37,8 +34,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation appModules.presentation.search_airport
     implementation appModules.presentation.search_ticket
     implementation appModules.domain.common
@@ -46,7 +41,6 @@ dependencies {
     implementation appModules.data.data
     implementation appModules.common
 
-    implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.material
     implementation deps.dagger

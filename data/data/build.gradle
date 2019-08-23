@@ -3,17 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion app.compileSdkVersion
-    defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.compileSdkVersion
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
     flavorDimensions "api"
     productFlavors {
         real {
@@ -32,11 +21,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation appModules.domain.search
 
-    implementation deps.kotlin
     implementation deps.dagger
     kapt annotation.dagger
     implementation deps.rxjava

@@ -2,24 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-android {
-    compileSdkVersion app.compileSdkVersion
-    defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.compileSdkVersion
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation deps.kotlin
     implementation deps.appcompat
     implementation deps.viewmodel
     implementation deps.dagger
