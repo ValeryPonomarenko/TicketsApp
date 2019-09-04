@@ -1,6 +1,6 @@
 package me.vponomarenko.ticketsapp.presentation.search.city.navigation
 
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 
 /**
  * Author: Valery Ponomarenko

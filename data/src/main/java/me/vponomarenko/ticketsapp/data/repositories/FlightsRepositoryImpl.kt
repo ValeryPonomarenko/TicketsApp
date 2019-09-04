@@ -3,9 +3,9 @@ package me.vponomarenko.ticketsapp.data.repositories
 import io.reactivex.Single
 import me.vponomarenko.ticketsapp.data.DataSource
 import me.vponomarenko.ticketsapp.data.mappers.FlightEntityToFlight
-import me.vponomarenko.ticketsapp.domain.search.api.FlightsRepository
-import me.vponomarenko.ticketsapp.domain.search.data.City
-import me.vponomarenko.ticketsapp.domain.search.data.Flight
+import me.vponomarenko.ticketsapp.domain.search.repositories.FlightsRepository
+import me.vponomarenko.ticketsapp.domain.search.entities.City
+import me.vponomarenko.ticketsapp.domain.search.entities.Flight
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

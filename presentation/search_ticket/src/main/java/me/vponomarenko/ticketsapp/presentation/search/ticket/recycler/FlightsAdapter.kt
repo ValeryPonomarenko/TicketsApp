@@ -3,7 +3,7 @@ package me.vponomarenko.ticketsapp.presentation.search.ticket.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import me.vponomarenko.ticketsapp.domain.search.data.Flight
+import me.vponomarenko.ticketsapp.domain.search.entities.Flight
 
 /**
  * Author: Valery Ponomarenko

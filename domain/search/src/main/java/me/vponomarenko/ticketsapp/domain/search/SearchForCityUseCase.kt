@@ -4,8 +4,8 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import me.vponomarenko.ticketsapp.domain.common.di.IoScheduler
 import me.vponomarenko.ticketsapp.domain.common.di.UiScheduler
-import me.vponomarenko.ticketsapp.domain.search.api.CitiesRepository
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.repositories.CitiesRepository
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 import javax.inject.Inject
 import javax.inject.Singleton
 

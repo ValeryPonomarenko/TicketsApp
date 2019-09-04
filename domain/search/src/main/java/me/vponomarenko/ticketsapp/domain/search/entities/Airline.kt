@@ -1,4 +1,4 @@
-package me.vponomarenko.ticketsapp.domain.search.data
+package me.vponomarenko.ticketsapp.domain.search.entities
 
 /**
  * Author: Valery Ponomarenko

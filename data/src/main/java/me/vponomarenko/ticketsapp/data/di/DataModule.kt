@@ -8,8 +8,8 @@ import me.vponomarenko.ticketsapp.data.DataSource
 import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.data.repositories.CitiesRepositoryImpl
 import me.vponomarenko.ticketsapp.data.repositories.FlightsRepositoryImpl
-import me.vponomarenko.ticketsapp.domain.search.api.CitiesRepository
-import me.vponomarenko.ticketsapp.domain.search.api.FlightsRepository
+import me.vponomarenko.ticketsapp.domain.search.repositories.CitiesRepository
+import me.vponomarenko.ticketsapp.domain.search.repositories.FlightsRepository
 import javax.inject.Singleton
 
 @Module

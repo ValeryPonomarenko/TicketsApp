@@ -1,8 +1,8 @@
-package me.vponomarenko.ticketsapp.domain.search.api
+package me.vponomarenko.ticketsapp.domain.search.repositories
 
 import io.reactivex.Single
-import me.vponomarenko.ticketsapp.domain.search.data.City
-import me.vponomarenko.ticketsapp.domain.search.data.Flight
+import me.vponomarenko.ticketsapp.domain.search.entities.City
+import me.vponomarenko.ticketsapp.domain.search.entities.Flight
 
 /**
  * Author: Valery Ponomarenko

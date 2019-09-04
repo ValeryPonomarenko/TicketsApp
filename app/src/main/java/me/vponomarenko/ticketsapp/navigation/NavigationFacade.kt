@@ -1,7 +1,7 @@
 package me.vponomarenko.ticketsapp.navigation
 
 import me.vponomarenko.ticketsapp.Screen
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 import me.vponomarenko.ticketsapp.navigation.commands.Back
 import me.vponomarenko.ticketsapp.navigation.commands.Forward
 import me.vponomarenko.ticketsapp.presentation.search.city.navigation.DestinationNavigation

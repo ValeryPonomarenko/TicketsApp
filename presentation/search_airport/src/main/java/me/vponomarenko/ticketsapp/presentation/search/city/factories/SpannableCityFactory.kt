@@ -4,7 +4,7 @@ import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.StyleSpan
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 import me.vponomarenko.ticketsapp.presentation.search.city.recycler.SpannableCity
 import javax.inject.Inject
 

@@ -5,8 +5,8 @@ import io.reactivex.Single
 import me.vponomarenko.ticketsapp.data.DataSource
 import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.data.mappers.CityEntityToCity
-import me.vponomarenko.ticketsapp.domain.search.api.CitiesRepository
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.repositories.CitiesRepository
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

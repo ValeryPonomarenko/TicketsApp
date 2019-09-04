@@ -1,7 +1,7 @@
 package me.vponomarenko.ticketsapp.data.mappers
 
 import me.vponomarenko.ticketsapp.data.entities.FlightEntity
-import me.vponomarenko.ticketsapp.domain.search.data.Flight
+import me.vponomarenko.ticketsapp.domain.search.entities.Flight
 
 internal class FlightEntityToFlight(
     private val cityEntityToCity: CityEntityToCity,

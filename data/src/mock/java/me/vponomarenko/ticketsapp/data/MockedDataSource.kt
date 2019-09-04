@@ -4,7 +4,7 @@ import io.reactivex.Single
 import me.vponomarenko.ticketsapp.data.entities.AirlineEntity
 import me.vponomarenko.ticketsapp.data.entities.CityEntity
 import me.vponomarenko.ticketsapp.data.entities.FlightEntity
-import me.vponomarenko.ticketsapp.domain.search.data.City
+import me.vponomarenko.ticketsapp.domain.search.entities.City
 import java.util.Date
 import kotlin.random.Random
 
